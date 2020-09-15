@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Project title</title>
+    <title>Gameshot</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -17,8 +18,8 @@
     <!-- Styles -->
     <style>
         html, body {
-            background-color: #fff;
-            color: #636b6f;
+            background-color: #292d30;
+            color: #D3D3D3;
             font-family: 'Nunito', sans-serif;
             font-weight: 200;
             height: 100vh;
@@ -26,69 +27,111 @@
             padding: 0;
         }
 
-        .full-height {
-            height: 100vh;
+        header {
+            background: aqua;
         }
 
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-
-        .content {
-            text-align: center;
-        }
-
-        .title {
-            /*margin-top: 10%;*/
-            font-size: 84px;
-        }
-
-
-        .links > a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
+        h1 {
+            color: aqua;
+            font-weight: bold;
             text-transform: uppercase;
         }
 
-        .m-b-md {
-            margin-bottom: 30px;
+        footer {
+            text-align: center;
         }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px; /* Set the fixed height of the footer here */
+            line-height: 60px; /* Vertically center the text there */
+            background-color: #343a40;
+            color: white;
+        }
+
+        /*.full-height {*/
+        /*    height: 100vh;*/
+        /*}*/
+
+        /*.flex-center {*/
+        /*    align-items: center;*/
+        /*    display: flex;*/
+        /*    justify-content: center;*/
+        /*}*/
+
+        /*.position-ref {*/
+        /*    position: relative;*/
+        /*}*/
+
+        /*.top-right {*/
+        /*    position: absolute;*/
+        /*    right: 10px;*/
+        /*    top: 18px;*/
+        /*}*/
+
+        /*.content {*/
+        /*    text-align: center;*/
+        /*}*/
+
+        /*.title {*/
+        /*    !*margin-top: 10%;*!*/
+        /*    font-size: 84px;*/
+        /*}*/
+
+
+        /*.links > a {*/
+        /*    color: #636b6f;*/
+        /*    padding: 0 25px;*/
+        /*    font-size: 13px;*/
+        /*    font-weight: 600;*/
+        /*    letter-spacing: .1rem;*/
+        /*    text-decoration: none;*/
+        /*    text-transform: uppercase;*/
+        /*}*/
+
+        /*.m-b-md {*/
+        /*    margin-bottom: 30px;*/
+        /*}*/
     </style>
 </head>
     <body>
         <header>
-            <h1>Project name</h1>
+            <div class="container-fluid bg-dark">
+                <h1>Gameshot<i class="fa fa-gamepad" style="color:aqua;"></i></h1>
+            </div>
             <div>
-                <div>
-                    <a href="{{route('home')}}">Home</a>
-                    <a href="{{route('login')}}">Login</a>
-                    <a href="{{route('register')}}">Register</a>
-                    <a href="{{route('about')}}">About</a>
-                </div>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('login')}}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('register')}}">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('about')}}">About</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
         </header>
 
         @yield ('content')
 
-        <footer>
-            <div>
-                <h3>Made with <i class="fa fa-heart" style="color:red;"></i> by Marc</h3>
+        <footer class="footer">
+            <div class="container">
+                <span>Made with <i class="fa fa-heart" style="color:red;"></i> by Marc - a CMGT student</span>
             </div>
         </footer>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
