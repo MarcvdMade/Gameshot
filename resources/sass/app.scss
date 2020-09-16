@@ -1,1 +1,46 @@
-//
+html, body {
+    background-color: #292d30;
+    color: #D3D3D3;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #FF101F;
+}
+
+h1 {
+    color: #FF101F;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+footer {
+    text-align: center;
+}
+
+.social-icon {
+    font-size: 30px;
+    padding: 20px;
+}
+
+.social-link {
+    color: #D3D3D3;
+}
+
+.social-link:hover {
+    color: #FF3C38;
+}
+
+.img-home {
+    border-bottom: solid 5px #FF101F;
+}
+
+.text-box {
+    background: #FF3C38;
+    border-radius: 10px;
+    padding: 20px;
+}

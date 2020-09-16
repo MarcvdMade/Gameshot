@@ -6,6 +6,8 @@
 
     <title>Gameshot</title>
 
+    <!-- sass -->
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
@@ -16,6 +18,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <!-- Styles -->
+
+    <!--color codes -->
+    <!--#FF101F bright red -->
+    <!--#FF3C38 tart orange -->
+    <!--#292D30 darkest dark -->
+    <!--#343A40 bit lighter dark -->
+    <!--#D3D3D3 light gray -->
+
     <style>
         html, body {
             background-color: #292d30;
@@ -28,17 +38,40 @@
         }
 
         header {
-            background: aqua;
+            background: #FF101F;
         }
 
         h1 {
-            color: aqua;
+            color: #FF101F;
             font-weight: bold;
             text-transform: uppercase;
         }
 
         footer {
             text-align: center;
+        }
+
+        .social-icon {
+            font-size: 30px;
+            padding: 20px;
+        }
+
+        .social-link {
+            color: #D3D3D3;
+        }
+
+        .social-link:hover {
+            color: #FF3C38;
+        }
+
+        .img-home {
+            border-bottom: solid 5px #FF101F;
+        }
+
+        .text-box {
+            background: #FF3C38;
+            border-radius: 10px;
+            padding: 20px;
         }
 
         /*.full-height {*/
@@ -89,7 +122,7 @@
     <body>
         <header>
             <div class="container-fluid bg-dark">
-                <h1>Gameshot<i class="fa fa-gamepad" style="color:aqua;"></i></h1>
+                <h1>Gameshot<i class="fa fa-gamepad" style="color: #FF101F;"></i></h1>
             </div>
             <div>
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -119,13 +152,17 @@
 
         @yield ('content')
 
-        <footer class="footer">
+        <footer class="card-footer bg-dark">
             <div class="container">
-                <span>Made with <i class="fa fa-heart" style="color:red;"></i> by Marc - a CMGT student</span>
+                <p>Made with <i class="fa fa-heart" style="color:red;"></i> by Marc vd Made - a CMGT student</p>
+                <div class="container">
+                    <a class="social-link" href="https://www.instagram.com/marcvdmade/?hl=nl"><i class="fa fa-instagram social-icon" style=""></i></a>
+                    <a class="social-link" href="https://www.linkedin.com/in/marc-van-der-made-b15914193/"><i class="fa fa-linkedin social-icon"></i></a>
+                </div>
             </div>
         </footer>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+{{--        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>--}}
+{{--        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>--}}
+{{--        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>--}}
     </body>
 </html>
