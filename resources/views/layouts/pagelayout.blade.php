@@ -74,6 +74,26 @@
             padding: 20px;
         }
 
+        .form-box {
+            background: #343a40;
+            border-radius: 10px;
+            margin: 50px;
+        }
+
+        .text-input {
+            background: #292d30;
+            color: #D3D3D3;
+            border-radius: 10px;
+            border: none;
+        }
+
+        .submit-input {
+            background: #FF3C38;
+            color: #D3D3D3;
+            border: none;
+            border-radius: 10px;
+        }
+
         /*.full-height {*/
         /*    height: 100vh;*/
         /*}*/
@@ -152,7 +172,7 @@
 
         @yield ('content')
 
-        <footer class="card-footer bg-dark">
+        <footer class="card-footer fixed-bottom bg-dark">
             <div class="container">
                 <p>Made with <i class="fa fa-heart" style="color:red;"></i> by Marc vd Made - a CMGT student</p>
                 <div class="container">

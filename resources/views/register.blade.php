@@ -3,26 +3,28 @@
 @section('content')
     <div>
         <div class="content">
-            <div>
-                <h2>Register</h2>
-                <div>
-                    <form>
-                        <div>
-                            <label for="email">Email:</label>
-                            <input type="email" name="email" id="email">
-                        </div>
-                        <div>
-                            <label for="create-username">Username:</label>
-                            <input type="text" name="create-username" id="create-username">
-                        </div>
-                        <div>
-                            <label for="create-password">Password:</label>
-                            <input type="password" name="create-password" id="create-password">
-                        </div>
-                        <div>
-                            <input type="submit" value="Create account">
-                        </div>
-                    </form>
+            <div class="d-flex justify-content-center text-center">
+                <div class="d-inline-flex flex-column p-2 form-box">
+                    <h2>Register</h2>
+                    <div>
+                        <form>
+                            <div class="d-flex flex-column">
+                                <label for="reg-email">Email</label>
+                                <input class="text-input" type="email" name="reg-email" id="reg-email">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <label for="reg-username">Username</label>
+                                <input class="text-input" type="text" name="reg-username" id="reg-username">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <label for="reg-password">Password</label>
+                                <input class="text-input" type="password" name="reg-password" id="reg-password">
+                            </div>
+                            <div class="mt-3">
+                                <input class="submit-input" type="submit" value="Register">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
