@@ -19,17 +19,18 @@
                 </div>
             </div>
             <div class="container-fluid">
-                <div class="row m-5">
+                <div class="row m-5 padding-bottom">
                     <div class="col-md-4 mb-5 text-box">
                         <h2>Wanna join the community?</h2>
                         <p>You can join our community by pressing this button.</p>
-                        <button></button>
+                        <a href="{{route('register')}}"><button>Register</button></a>
                         <p>If you already have a account you can sign in here.</p>
-                        <button></button>
+                        <a href="{{route('login')}}"><button>Log in</button></a>
                     </div>
                     <div class="col-md-4 mb-5 ml-auto text-box">
                         <h2>About</h2>
                         <p>This platform is a school project. I started working on this to complete my programming 5 lessons.</p>
+                        <a href="{{route('about')}}"><button>read more here.</button></a>
                     </div>
                 </div>
             </div>

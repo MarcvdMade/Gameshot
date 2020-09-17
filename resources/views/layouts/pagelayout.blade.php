@@ -53,11 +53,15 @@
 
         .social-icon {
             font-size: 30px;
-            padding: 20px;
+            padding: 10px;
         }
 
         .social-link {
             color: #D3D3D3;
+            -webkit-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+            -moz-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+            -o-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+            transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
         }
 
         .social-link:hover {
@@ -88,10 +92,25 @@
         }
 
         .submit-input {
-            background: #FF3C38;
-            color: #D3D3D3;
-            border: none;
+            background: none;
+            color: #FF101F;
+            border: #FF101F solid 2px;
             border-radius: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+            -webkit-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+            -moz-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+            -o-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+            transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        }
+
+        .submit-input:hover {
+            background: #FF101F;
+            color: #D3D3D3;
+        }
+
+        .padding-bottom {
+            padding-bottom: 100px;
         }
 
         /*.full-height {*/
@@ -181,8 +200,8 @@
                 </div>
             </div>
         </footer>
-{{--        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>--}}
-{{--        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>--}}
-{{--        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>--}}
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     </body>
 </html>
