@@ -24,7 +24,7 @@
                         <h2>Wanna join the community?</h2>
                         <p>You can join our community by pressing this button.</p>
                         <a href="{{route('register')}}"><button class="link-button">Register</button></a>
-                        <p>If you already have a account you can sign in here.</p>
+                        <p>If you already have an account you can sign in here.</p>
                         <a href="{{route('login')}}"><button class="link-button">Log in</button></a>
                     </div>
                     <div class="col-md-4 mb-5 ml-auto text-box">

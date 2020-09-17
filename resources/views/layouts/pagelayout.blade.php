@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Gameshot</title>
+    <link rel="shortcut icon" type="image/png" href="{{asset('img/favicon.png')}}">
 
     <!-- sass -->
 
@@ -116,6 +117,7 @@
             border-radius: 10px;
             text-transform: uppercase;
             font-weight: bold;
+            margin-bottom: 20px;
             -webkit-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
             -moz-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
             -o-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
@@ -130,6 +132,7 @@
         .padding-bottom {
             padding-bottom: 100px;
         }
+
 
         /*.full-height {*/
         /*    height: 100vh;*/
