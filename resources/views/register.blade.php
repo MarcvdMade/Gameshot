@@ -3,7 +3,7 @@
 @section('content')
     <div>
         <div class="content">
-            <div class="d-flex justify-content-center text-center">
+            <div class="d-flex justify-content-center text-center padding-bottom">
                 <div class="d-inline-flex flex-column p-2 form-box">
                     <h2>Register</h2>
                     <div>

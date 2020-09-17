@@ -109,6 +109,24 @@
             color: #D3D3D3;
         }
 
+        .link-button {
+            background: none;
+            color: #ffffff;
+            border: #ffffff solid 2px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+            -webkit-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+            -moz-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+            -o-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+            transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        }
+
+        .link-button:hover {
+            background: #ffffff;
+            color: #292d30;
+        }
+
         .padding-bottom {
             padding-bottom: 100px;
         }
