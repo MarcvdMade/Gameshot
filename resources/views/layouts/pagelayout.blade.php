@@ -7,8 +7,6 @@
     <title>Gameshot</title>
     <link rel="shortcut icon" type="image/png" href="{{asset('img/favicon.png')}}">
 
-    <!-- sass -->
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
@@ -17,6 +15,9 @@
 
     <!-- Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- sass -->
+    <link rel="stylesheet" type="" href="{{asset('css/app.css')}}">
 
     <!-- Styles -->
 
@@ -27,157 +28,157 @@
     <!--#343A40 bit lighter dark -->
     <!--#D3D3D3 light gray -->
 
-    <style>
-        html, body {
-            background-color: #292d30;
-            color: #D3D3D3;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 200;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background: #FF101F;
-        }
-
-        h1 {
-            color: #FF101F;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        footer {
-            text-align: center;
-        }
-
-        .social-icon {
-            font-size: 30px;
-            padding: 10px;
-        }
-
-        .social-link {
-            color: #D3D3D3;
-            -webkit-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
-            -moz-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
-            -o-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
-            transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
-        }
-
-        .social-link:hover {
-            color: #FF3C38;
-        }
-
-        .img-home {
-            border-bottom: solid 5px #FF101F;
-        }
-
-        .text-box {
-            background: #FF3C38;
-            border-radius: 10px;
-            padding: 20px;
-        }
-
-        .form-box {
-            background: #343a40;
-            border-radius: 10px;
-            margin: 50px;
-        }
-
-        .text-input {
-            background: #292d30;
-            color: #D3D3D3;
-            border-radius: 10px;
-            border: none;
-        }
-
-        .submit-input {
-            background: none;
-            color: #FF101F;
-            border: #FF101F solid 2px;
-            border-radius: 10px;
-            text-transform: uppercase;
-            font-weight: bold;
-            -webkit-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
-            -moz-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
-            -o-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
-            transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
-        }
-
-        .submit-input:hover {
-            background: #FF101F;
-            color: #D3D3D3;
-        }
-
-        .link-button {
-            background: none;
-            color: #ffffff;
-            border: #ffffff solid 2px;
-            border-radius: 10px;
-            text-transform: uppercase;
-            font-weight: bold;
-            margin-bottom: 20px;
-            -webkit-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
-            -moz-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
-            -o-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
-            transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
-        }
-
-        .link-button:hover {
-            background: #ffffff;
-            color: #292d30;
-        }
-
-        .padding-bottom {
-            padding-bottom: 100px;
-        }
-
-
-        /*.full-height {*/
-        /*    height: 100vh;*/
-        /*}*/
-
-        /*.flex-center {*/
-        /*    align-items: center;*/
-        /*    display: flex;*/
-        /*    justify-content: center;*/
-        /*}*/
-
-        /*.position-ref {*/
-        /*    position: relative;*/
-        /*}*/
-
-        /*.top-right {*/
-        /*    position: absolute;*/
-        /*    right: 10px;*/
-        /*    top: 18px;*/
-        /*}*/
-
-        /*.content {*/
-        /*    text-align: center;*/
-        /*}*/
-
-        /*.title {*/
-        /*    !*margin-top: 10%;*!*/
-        /*    font-size: 84px;*/
-        /*}*/
+{{--    <style>--}}
+{{--        /*html, body {*/--}}
+{{--        /*    background-color: #292d30;*/--}}
+{{--        /*    color: #D3D3D3;*/--}}
+{{--        /*    font-family: 'Nunito', sans-serif;*/--}}
+{{--        /*    font-weight: 200;*/--}}
+{{--        /*    height: 100vh;*/--}}
+{{--        /*    margin: 0;*/--}}
+{{--        /*    padding: 0;*/--}}
+{{--        /*}*/--}}
+{{--        --}}
+{{--        /*header {*/--}}
+{{--        /*    background: #FF101F;*/--}}
+{{--        /*}*/--}}
+{{--        --}}
+{{--        /*h1 {*/--}}
+{{--        /*    color: #FF101F;*/--}}
+{{--        /*    font-weight: bold;*/--}}
+{{--        /*    text-transform: uppercase;*/--}}
+{{--        /*}*/--}}
+{{--        --}}
+{{--        /*footer {*/--}}
+{{--        /*    text-align: center;*/--}}
+{{--        /*}*/--}}
+{{--        --}}
+{{--        /*.social-icon {*/--}}
+{{--        /*    font-size: 30px;*/--}}
+{{--        /*    padding: 10px;*/--}}
+{{--        /*}*/--}}
+{{--        --}}
+{{--        /*.social-link {*/--}}
+{{--        /*    color: #D3D3D3;*/--}}
+{{--        /*    -webkit-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);*/--}}
+{{--        /*    -moz-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);*/--}}
+{{--        /*    -o-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);*/--}}
+{{--        /*    transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);*/--}}
+{{--        /*}*/--}}
+{{--        --}}
+{{--        /*.social-link:hover {*/--}}
+{{--        /*    color: #FF3C38;*/--}}
+{{--        /*}*/--}}
+{{--        --}}
+{{--        /*.img-home {*/--}}
+{{--        /*    border-bottom: solid 5px #FF101F;*/--}}
+{{--        /*}*/--}}
+{{--        --}}
+{{--        /*.text-box {*/--}}
+{{--        /*    background: #FF3C38;*/--}}
+{{--        /*    border-radius: 10px;*/--}}
+{{--        /*    padding: 20px;*/--}}
+{{--        /*}*/--}}
+{{--        --}}
+{{--        /*.form-box {*/--}}
+{{--        /*    background: #343a40;*/--}}
+{{--        /*    border-radius: 10px;*/--}}
+{{--        /*    margin: 50px;*/--}}
+{{--        /*}*/--}}
+{{--        --}}
+{{--        /*.text-input {*/--}}
+{{--        /*    background: #292d30;*/--}}
+{{--        /*    color: #D3D3D3;*/--}}
+{{--        /*    border-radius: 10px;*/--}}
+{{--        /*    border: none;*/--}}
+{{--        /*}*/--}}
+{{--        --}}
+{{--        /*.submit-input {*/--}}
+{{--        /*    background: none;*/--}}
+{{--        /*    color: #FF101F;*/--}}
+{{--        /*    border: #FF101F solid 2px;*/--}}
+{{--        /*    border-radius: 10px;*/--}}
+{{--        /*    text-transform: uppercase;*/--}}
+{{--        /*    font-weight: bold;*/--}}
+{{--        /*    -webkit-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);*/--}}
+{{--        /*    -moz-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);*/--}}
+{{--        /*    -o-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);*/--}}
+{{--        /*    transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);*/--}}
+{{--        /*}*/--}}
+{{--        --}}
+{{--        /*.submit-input:hover {*/--}}
+{{--        /*    background: #FF101F;*/--}}
+{{--        /*    color: #D3D3D3;*/--}}
+{{--        /*}*/--}}
+{{--        --}}
+{{--        /*.link-button {*/--}}
+{{--        /*    background: none;*/--}}
+{{--        /*    color: #ffffff;*/--}}
+{{--        /*    border: #ffffff solid 2px;*/--}}
+{{--        /*    border-radius: 10px;*/--}}
+{{--        /*    text-transform: uppercase;*/--}}
+{{--        /*    font-weight: bold;*/--}}
+{{--        /*    margin-bottom: 20px;*/--}}
+{{--        /*    -webkit-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);*/--}}
+{{--        /*    -moz-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);*/--}}
+{{--        /*    -o-transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);*/--}}
+{{--        /*    transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1.000);*/--}}
+{{--        /*}*/--}}
+{{--        --}}
+{{--        /*.link-button:hover {*/--}}
+{{--        /*    background: #ffffff;*/--}}
+{{--        /*    color: #292d30;*/--}}
+{{--        /*}*/--}}
+{{--        --}}
+{{--        /*.padding-bottom {*/--}}
+{{--        /*    padding-bottom: 100px;*/--}}
+{{--        /*}*/--}}
 
 
-        /*.links > a {*/
-        /*    color: #636b6f;*/
-        /*    padding: 0 25px;*/
-        /*    font-size: 13px;*/
-        /*    font-weight: 600;*/
-        /*    letter-spacing: .1rem;*/
-        /*    text-decoration: none;*/
-        /*    text-transform: uppercase;*/
-        /*}*/
+{{--        /*.full-height {*/--}}
+{{--        /*    height: 100vh;*/--}}
+{{--        /*}*/--}}
 
-        /*.m-b-md {*/
-        /*    margin-bottom: 30px;*/
-        /*}*/
-    </style>
+{{--        /*.flex-center {*/--}}
+{{--        /*    align-items: center;*/--}}
+{{--        /*    display: flex;*/--}}
+{{--        /*    justify-content: center;*/--}}
+{{--        /*}*/--}}
+
+{{--        /*.position-ref {*/--}}
+{{--        /*    position: relative;*/--}}
+{{--        /*}*/--}}
+
+{{--        /*.top-right {*/--}}
+{{--        /*    position: absolute;*/--}}
+{{--        /*    right: 10px;*/--}}
+{{--        /*    top: 18px;*/--}}
+{{--        /*}*/--}}
+
+{{--        /*.content {*/--}}
+{{--        /*    text-align: center;*/--}}
+{{--        /*}*/--}}
+
+{{--        /*.title {*/--}}
+{{--        /*    !*margin-top: 10%;*!*/--}}
+{{--        /*    font-size: 84px;*/--}}
+{{--        /*}*/--}}
+
+
+{{--        /*.links > a {*/--}}
+{{--        /*    color: #636b6f;*/--}}
+{{--        /*    padding: 0 25px;*/--}}
+{{--        /*    font-size: 13px;*/--}}
+{{--        /*    font-weight: 600;*/--}}
+{{--        /*    letter-spacing: .1rem;*/--}}
+{{--        /*    text-decoration: none;*/--}}
+{{--        /*    text-transform: uppercase;*/--}}
+{{--        /*}*/--}}
+
+{{--        /*.m-b-md {*/--}}
+{{--        /*    margin-bottom: 30px;*/--}}
+{{--        /*}*/--}}
+{{--    </style>--}}
 </head>
     <body>
         <header>
