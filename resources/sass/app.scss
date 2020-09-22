@@ -1,3 +1,20 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//<!-- Styles -->
+////
+////<!--color codes -->
+////<!--#FF101F bright red -->
+////<!--#FF3C38 tart orange -->
+////<!--#292D30 darkest dark -->
+////<!--#343A40 bit lighter dark -->
+////<!--#D3D3D3 light gray -->
 
 html, body {
     background-color: #292d30;
@@ -102,4 +119,9 @@ footer {
 
 .padding-bottom {
     padding-bottom: 100px;
+}
+
+.dropdown-menu > a:hover {
+    background-image: none;
+    background-color: #FF101F;
 }
