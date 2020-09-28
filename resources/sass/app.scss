@@ -130,3 +130,25 @@ footer {
     background-color: #FF101F;
     color: #D3D3D3;
 }
+
+//scrollbar
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #343A40;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #FF101F;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #FF3C38;
+}

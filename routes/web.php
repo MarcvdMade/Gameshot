@@ -20,3 +20,5 @@ Route::get('about', 'AboutController@show')->name('about');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('admin', 'AdminController@index')->name('admin')->middleware('can:view_admin');
