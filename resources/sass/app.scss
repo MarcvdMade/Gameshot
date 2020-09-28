@@ -121,7 +121,12 @@ footer {
     padding-bottom: 100px;
 }
 
+.dropdown-menu > a {
+    color: #D3D3D3;
+}
+
 .dropdown-menu > a:hover {
     background-image: none;
     background-color: #FF101F;
+    color: #D3D3D3;
 }

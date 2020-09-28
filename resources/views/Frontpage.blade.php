@@ -12,8 +12,8 @@
                     <div class="container">
                         <p class="text-center">This is a platform for sharing your in game experiences with fellow gamers.
                             My hope is that this platform will grow to a social platform for gamers to share all their game
-                            memorys and make new friends to share those memorys with. Screenshots in games are a good way
-                            to eternalize those memorys.
+                            memories and make new friends to share those memories with. Screenshots in games are a good way
+                            to eternalize those memories.
                         </p>
                     </div>
                 </div>
