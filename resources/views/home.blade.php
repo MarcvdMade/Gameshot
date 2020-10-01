@@ -10,5 +10,21 @@
             </div>
         @endif
     </div>
+    <div>
+        <ul>
+        @foreach($posts as $post)
+            @php /** @var App\Posts $post */ @endphp
+            <li>
+                <h3>{{$post->title}}</h3>
+                <h4>{{$post->user->name}}</h4>
+                <p>{{$post->description}}</p>
+                <p>{{$post->game->name}}</p>
+                <p>{{$post->game->developer}}</p>
+                <p>{{$post->genre->name}}</p>
+                <img src={{$post->image}}>
+            </li>
+        @endforeach
+        </ul>
+    </div>
 </div>
 @endsection
