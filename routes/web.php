@@ -17,8 +17,13 @@ Route::get('/', 'FrontpageController@show')->name('frontpage');
 
 Route::get('about', 'AboutController@show')->name('about');
 
+Route::get('admin', 'AdminController@index')->name('admin')->middleware('can:view_admin');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('admin', 'AdminController@index')->name('admin')->middleware('can:view_admin');
+Route::post('/home', 'HomeController@store');
+Route::get('/home/create', 'HomeController@create')->name('create');
+Route::get('/home/{post}', 'HomeController@show');
+Route::get('/home/{post}/edit', 'HomeController@edit');
+Route::put('/home/{post}', 'HomeController@update');

@@ -10954,13 +10954,6 @@ footer {
   margin: 50px;
 }
 
-.text-input {
-  background: #292d30;
-  color: #D3D3D3;
-  border-radius: 10px;
-  border: none;
-}
-
 .submit-input {
   background: none;
   color: #FF101F;
@@ -10993,7 +10986,7 @@ footer {
 }
 
 .padding-bottom {
-  padding-bottom: 100px;
+  padding-bottom: 150px;
 }
 
 .dropdown-menu > a {
@@ -11014,6 +11007,13 @@ footer {
   background: #343A40;
   border: 3px solid #FF101F;
   margin: 20px;
+}
+
+.action-row {
+  background: #343A40;
+  padding: 5px;
+  border: 3px solid #FF101F;
+  text-align: center;
 }
 
 /* width */
