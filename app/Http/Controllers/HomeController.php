@@ -28,9 +28,13 @@ class HomeController extends Controller
     {
         //renders a list of a resource
         $posts = Posts::latest('created_at')->get();
+        $genres = Genre::all();
+        $games = Games::all();
 
         return view('home', [
-            'posts' => $posts
+            'posts' => $posts,
+            'genres' => $genres,
+            'games' => $games
         ]);
     }
 
@@ -96,10 +100,12 @@ class HomeController extends Controller
 
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        //remove the resource
-
+//        $this->authorize('delete-post');
+        $post = Posts::find($id);
+        $post->delete();
+        return redirect('home');
     }
 
 }

@@ -23,6 +23,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@store');
+Route::delete('/home/{post}', 'HomeController@destroy');
 Route::get('/home/create', 'HomeController@create')->name('create');
 Route::get('/home/{post}', 'HomeController@show');
 Route::get('/home/{post}/edit', 'HomeController@edit');

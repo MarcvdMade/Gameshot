@@ -25,10 +25,19 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Gate::define('delete-post', function ($user, $post) {
+            return $post->user->is($user);
+        });
+
+        Gate::define('edit-post', function ($user, $post) {
+            return $post->user->is($user);
+        });
+
         Gate::before(function ($user, $ability) {
             if ($user->abilities()->contains($ability)) {
                 return true;
             }
         });
+
     }
 }

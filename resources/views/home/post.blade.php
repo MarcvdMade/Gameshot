@@ -13,8 +13,19 @@
                 <img class="img-fluid" src={{$post->image}}>
             </div>
         </div>
-        <div class="row justify-content-md-center padding-bottom">
-            <a href="{{route('home')}}"><button class="submit-input">Go back</button></a>
+        <div class="d-flex justify-content-center padding-bottom">
+            @can('edit-post', $post)
+                <a><button class="submit-input m-2">Edit post</button></a>
+            @endcan
+            <a href="{{route('home')}}"><button class="submit-input m-2">Go back</button></a>
+            @can('delete-post', $post)
+            <form method="POST" action="">
+                @csrf
+                @method('DELETE')
+
+                <button type="submit" class="submit-input m-2">Delete post</button>
+            </form>
+            @endcan
         </div>
     </div>
 @endsection

@@ -20,13 +20,19 @@
                         <div>
                             <label for="game">Game</label>
                             <select name="game">
-                                <option></option>
+                                <option hidden disabled selected> -- select a game -- </option>
+                                @foreach($games as $game)
+                                    <option value="{{$game->id}}">{{$game->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div>
                             <label for="genre">Genre</label>
                             <select name="genre">
-                                <option></option>
+                                <option hidden disabled selected> -- select a genre -- </option>
+                                @foreach($genres as $genre)
+                                    <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div>
@@ -50,8 +56,13 @@
                 @foreach($posts as $post)
                     @php /** @var App\Posts $post */ @endphp
                 <div class=" card post-div">
-                    <a href="/home/{{$post->id}}"><p>{{$post->title}}</p></a>
+                    <p>{{$post->title}}</p>
                     <p>{{$post->user->name}}</p>
+                    <div class="d-flex">
+                        <p class="mr-2">{{$post->genre->name}}</p>
+                        <p>{{$post->game->name}}</p>
+                    </div>
+                    <a href="/home/{{$post->id}}"><button class="submit-input">Show full post</button></a>
                     <img class="img-fluid" src={{$post->image}}>
                 </div>
                 @endforeach
