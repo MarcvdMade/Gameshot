@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Games;
+use App\Game;
 use App\Genre;
-use App\Posts;
+use App\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,12 +27,12 @@ class HomeController extends Controller
     public function index()
     {
         //renders a list of a resource
-        $posts = Posts::latest('created_at')->get();
+        $post = Post::latest('created_at')->get();
         $genres = Genre::all();
-        $games = Games::all();
+        $games = Game::all();
 
         return view('home', [
-            'posts' => $posts,
+            'post' => $post,
             'genres' => $genres,
             'games' => $games
         ]);
@@ -40,7 +40,7 @@ class HomeController extends Controller
 
     public function show($id)
     {
-        $post = Posts::find($id);
+        $post = Post::find($id);
 
         return view('home.post', [
             'post' => $post
@@ -51,7 +51,7 @@ class HomeController extends Controller
     {
         //shows view to create a new resource
         $genres = Genre::all();
-        $games = Games::all();
+        $games = Game::all();
 
         return view('home.create', [
             'genres' => $genres,
@@ -72,7 +72,7 @@ class HomeController extends Controller
             'hidden' => 'required'
         ]);
 //        persist create form
-        $post = new Posts();
+        $post = new Post();
 
         $post->title = request('title');
         $post->description = request('description');
@@ -84,26 +84,63 @@ class HomeController extends Controller
 
         $post->save();
 
-        return redirect('home')
-            ->with('succes', 'You have successfully created a post!');
+        return redirect('home');
+//            ->with('succes', 'You have successfully created a post!');
     }
 
-    public function edit()
+    public function edit(Post $post)
     {
+        $this->authorize('myPost', $post);
+
+        //renders a list of a resource
+        $post = Post::find($post->id);
+        $genres = Genre::all();
+        $games = Game::all();
+
         //show a view to edit a resource
-
+        return view('home.edit', [
+            'post' => $post,
+            'genres' => $genres,
+            'games' => $games
+        ]);
     }
 
-    public function update()
+    public function update(Post $post)
     {
+
+        $this->authorize('myPost', $post);
+//        dd(\request()->all());
         //persist the edited resource
+        request()->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => ['required'],
+            'genre_id' => 'required',
+            'game_id' => 'required',
+            'user_id' => 'required',
+            'hidden' => 'required'
+        ]);
 
+        $post = Post::find($post->id);
+
+        $post->title = request('title');
+        $post->description = request('description');
+        $post->image = request('image');
+        $post->user_id = request('user_id');
+        $post->genre_id = request('genre_id');
+        $post->game_id = request('game_id');
+        $post->hidden = request('hidden');
+
+        $post->save();
+
+        return redirect('home/' .$post->id);
     }
 
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-//        $this->authorize('delete-post');
-        $post = Posts::find($id);
+        $this->authorize('myPost', $post);
+
+        $post = Post::find($post->id);
         $post->delete();
         return redirect('home');
     }

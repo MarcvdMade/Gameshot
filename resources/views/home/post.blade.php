@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid no-gutters">
         <div class="row justify-content-md-center">
-            <div class="post-div">
+            <div class="post-div text-wrap">
                 <p>{{$post->title}}</p>
                 <p>{{$post->user->name}}</p>
                 <p>{{$post->description}}</p>
@@ -14,11 +14,11 @@
             </div>
         </div>
         <div class="d-flex justify-content-center padding-bottom">
-            @can('edit-post', $post)
-                <a><button class="submit-input m-2">Edit post</button></a>
+            @can('myPost', $post)
+                <a href="/home/{{$post->id}}/edit"><button class="submit-input m-2">Edit post</button></a>
             @endcan
             <a href="{{route('home')}}"><button class="submit-input m-2">Go back</button></a>
-            @can('delete-post', $post)
+            @can('myPost', $post, $post->user_id)
             <form method="POST" action="">
                 @csrf
                 @method('DELETE')

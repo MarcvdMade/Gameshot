@@ -53,8 +53,8 @@
         </div>
         <div class="row post-holder justify-content-md-center">
             <div class="row justify-content-md-center">
-                @foreach($posts as $post)
-                    @php /** @var App\Posts $post */ @endphp
+                @foreach($post as $post)
+                    @php /** @var App\Post $post */ @endphp
                 <div class=" card post-div">
                     <p>{{$post->title}}</p>
                     <p>{{$post->user->name}}</p>

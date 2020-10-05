@@ -4,17 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Posts extends Model
+class Post extends Model
 {
-    protected $table = 'posts';
-
 
     public function user() {
         return $this->belongsTo(User::class);
     }
 
     public function game() {
-        return $this->belongsTo(Games::class);
+        return $this->belongsTo(Game::class);
     }
 
     public function genre() {
