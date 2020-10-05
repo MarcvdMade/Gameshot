@@ -36,7 +36,7 @@
                             <label for="image">Image</label>
 
                             <div>
-                                <input type="text" name="image" id="image" required>
+                                <input type="file" name="image" id="image" required>
                                 @error('image')
                                 <p>{{$errors->first('image')}}</p>
                                 @enderror

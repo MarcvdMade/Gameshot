@@ -86,7 +86,7 @@
                     </form>
 {{--                    <a href="{{route('home'.$post->id)}}"><button class="submit-input m-2">Cancel</button></a>--}}
                     <div class="mt-5 mb-3">
-                        <img class="img-fluid" src="{{$post->image}}">
+                        <img class="img-fluid" src="{{asset('storage/'.$post->image)}}">
                     </div>
                 </div>
             </div>

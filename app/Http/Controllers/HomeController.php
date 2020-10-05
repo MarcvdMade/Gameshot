@@ -65,7 +65,7 @@ class HomeController extends Controller
         request()->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => ['required'],
+            'image' => ['required', 'image', 'max:3000', 'mimes:jpeg,png,jpg,gif,svg'],
             'genre_id' => 'required',
             'game_id' => 'required',
             'user_id' => 'required',
@@ -76,7 +76,7 @@ class HomeController extends Controller
 
         $post->title = request('title');
         $post->description = request('description');
-        $post->image = request('image');
+        $post->image = request('image')->store('postimage');
         $post->user_id = request('user_id');
         $post->genre_id = request('genre_id');
         $post->game_id = request('game_id');

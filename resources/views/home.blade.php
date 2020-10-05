@@ -57,13 +57,13 @@
                     @php /** @var App\Post $post */ @endphp
                 <div class=" card post-div">
                     <p>{{$post->title}}</p>
-                    <p>{{$post->user->name}}</p>
+                    <p>Posted by {{$post->user->name}}</p>
                     <div class="d-flex">
-                        <p class="mr-2">{{$post->genre->name}}</p>
-                        <p>{{$post->game->name}}</p>
+                        <p class="mr-2">Genre: {{$post->genre->name}}</p>
+                        <p>Game: {{$post->game->name}}</p>
                     </div>
                     <a href="/home/{{$post->id}}"><button class="submit-input">Show full post</button></a>
-                    <img class="img-fluid" src={{$post->image}}>
+                    <img class="img-fluid" src={{asset('storage/'.$post->image)}}>
                 </div>
                 @endforeach
             </div>

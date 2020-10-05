@@ -18,4 +18,9 @@ class Post extends Model
     public function genre() {
         return $this->belongsTo(Genre::class);
     }
+
+    public function getPostImage($value)
+    {
+        return Storage::get($value);
+    }
 }
