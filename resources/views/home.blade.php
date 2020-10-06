@@ -10,6 +10,11 @@
         @endif
     </div>
     <div class="container-fluid no-gutters">
+        @if($message = Session::get('success'))
+            <div class="alert alert-success mt-3 text-center">
+                <strong>{{$message}}</strong>
+            </div>
+        @endif
         <div class=" action-row row justify-content-md-center mt-5 pt-3">
             <div class="col">
                 <a href=""><button class="submit-input">Profile</button></a>
@@ -56,14 +61,14 @@
                 @foreach($post as $post)
                     @php /** @var App\Post $post */ @endphp
                 <div class=" card post-div">
-                    <p>{{$post->title}}</p>
-                    <p>Posted by {{$post->user->name}}</p>
-                    <div class="d-flex">
-                        <p class="mr-2">Genre: {{$post->genre->name}}</p>
-                        <p>Game: {{$post->game->name}}</p>
+                    <div class="post-title">
+                        <h2>{{$post->title}}</h2>
                     </div>
-                    <a href="/home/{{$post->id}}"><button class="submit-input">Show full post</button></a>
                     <img class="img-fluid" src={{asset('storage/'.$post->image)}}>
+                    <p>Posted by {{$post->user->name}}</p>
+                    <p class="mr-2">Genre: {{$post->genre->name}}</p>
+                    <p>Game: {{$post->game->name}}</p>
+                    <a href="{{route('home.post', $post['id'])}}"><button class="submit-input">Show full post</button></a>
                 </div>
                 @endforeach
             </div>

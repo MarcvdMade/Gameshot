@@ -19,8 +19,8 @@ class Post extends Model
         return $this->belongsTo(Genre::class);
     }
 
-    public function getPostImage($value)
-    {
-        return Storage::get($value);
-    }
+//    public function getPostImage($value)
+//    {
+//        return Storage::get($value);
+//    }
 }

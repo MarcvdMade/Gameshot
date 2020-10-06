@@ -42,6 +42,10 @@ class HomeController extends Controller
     {
         $post = Post::find($id);
 
+        if(! $post) {
+            abort(404, 'Post not found!');
+        }
+
         return view('home.post', [
             'post' => $post
         ]);
@@ -84,8 +88,8 @@ class HomeController extends Controller
 
         $post->save();
 
-        return redirect('home');
-//            ->with('succes', 'You have successfully created a post!');
+        return redirect('home')
+            ->with('success', 'You have successfully created a post!');
     }
 
     public function edit(Post $post)
@@ -133,7 +137,8 @@ class HomeController extends Controller
 
         $post->save();
 
-        return redirect('home/' .$post->id);
+        return redirect('home/' .$post->id)
+            ->with('success', 'You have successfully edited your post!');
     }
 
     public function destroy(Post $post)
@@ -142,7 +147,8 @@ class HomeController extends Controller
 
         $post = Post::find($post->id);
         $post->delete();
-        return redirect('home');
+        return redirect('home')
+            ->with('success', 'You have successfully deleted your post!');
     }
 
 }
