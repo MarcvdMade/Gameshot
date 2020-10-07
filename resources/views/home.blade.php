@@ -25,7 +25,7 @@
                         <div>
                             <label for="game">Game</label>
                             <select name="game">
-                                <option hidden disabled selected> -- select a game -- </option>
+                                <option hidden disabled selected> -- Select a game -- </option>
                                 @foreach($games as $game)
                                     <option value="{{$game->id}}">{{$game->name}}</option>
                                 @endforeach
@@ -34,7 +34,7 @@
                         <div>
                             <label for="tag">Tag</label>
                             <select name="tag">
-                                <option hidden disabled selected> -- select a tag -- </option>
+                                <option hidden disabled selected> -- Select a tag -- </option>
                                 @foreach($tags as $tag)
                                     <option value="{{$tag->id}}">{{$tag->name}}</option>
                                 @endforeach
