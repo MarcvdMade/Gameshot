@@ -32,11 +32,11 @@
                             </select>
                         </div>
                         <div>
-                            <label for="genre">Genre</label>
-                            <select name="genre">
-                                <option hidden disabled selected> -- select a genre -- </option>
-                                @foreach($genres as $genre)
-                                    <option value="{{$genre->id}}">{{$genre->name}}</option>
+                            <label for="tag">Tag</label>
+                            <select name="tag">
+                                <option hidden disabled selected> -- select a tag -- </option>
+                                @foreach($tags as $tag)
+                                    <option value="{{$tag->id}}">{{$tag->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -65,10 +65,12 @@
                         <h2>{{$post->title}}</h2>
                     </div>
                     <img class="img-fluid" src={{asset('storage/'.$post->image)}}>
-                    <p>Posted by {{$post->user->name}}</p>
-                    <p class="mr-2">Genre: {{$post->genre->name}}</p>
+                    <p>Posted by {{$post->user->username}}</p>
                     <p>Game: {{$post->game->name}}</p>
-                    <a href="{{route('home.post', $post['id'])}}"><button class="submit-input">Show full post</button></a>
+                    @foreach($post->tags as $tag)
+                        <a href="{{ route('home', ['tag' => $tag->name]) }}">{{$tag->name}}</a>
+                    @endforeach
+                    <a href="{{route('home', $post['id'])}}"><button class="submit-input">Show full post</button></a>
                 </div>
                 @endforeach
             </div>

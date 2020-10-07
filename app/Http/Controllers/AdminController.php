@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
-use App\Genre;
+use App\Tag;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
@@ -13,13 +13,13 @@ class AdminController extends Controller
     public function index()
     {
         $posts = Post::all();
-        $genres = Genre::all();
+        $tags = Tag::all();
         $games = Game::all();
         $users = User::all();
 
         return view('admin', [
             'posts' => $posts,
-            'genres' => $genres,
+            'tags' => $tags,
             'games' => $games,
             'users' => $users
         ]);

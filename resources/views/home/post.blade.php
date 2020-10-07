@@ -13,11 +13,13 @@
                 <div class="text-wrap">
                     <h2 class="post-title">{{$post->title}}</h2>
                     <img class="img-fluid" src={{asset('storage/'.$post->image)}}>
-                    <p>Posted by {{$post->user->name}}</p>
+                    <p>Posted by {{$post->user->username}}</p>
                     <p>{{$post->description}}</p>
                     <p>Game: {{$post->game->name}}</p>
                     <p>Developer: {{$post->game->developer}}</p>
-                    <p>Genre: {{$post->genre->name}}</p>
+                    @foreach($post->tags as $tag)
+                        <p>{{$tag->name}}</p>
+                    @endforeach
                 </div>
             </div>
         </div>

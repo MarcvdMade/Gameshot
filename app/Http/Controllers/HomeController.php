@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
-use App\Genre;
+use App\Tag;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -26,14 +26,22 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        if (request('tag')) {
+            $post = Tag::where('name', request('tag'))->firstOrFail()->posts;
+
+//            return $post;
+        } else {
+            $post = Post::latest('created_at')->get();
+        }
+
         //renders a list of a resource
-        $post = Post::latest('created_at')->get();
-        $genres = Genre::all();
+        $tags = Tag::all();
         $games = Game::all();
 
         return view('home', [
             'post' => $post,
-            'genres' => $genres,
+            'tags' => $tags,
             'games' => $games
         ]);
     }
@@ -54,11 +62,11 @@ class HomeController extends Controller
     public function create()
     {
         //shows view to create a new resource
-        $genres = Genre::all();
+        $tags = Tag::all();
         $games = Game::all();
 
         return view('home.create', [
-            'genres' => $genres,
+            'tags' => $tags,
             'games' => $games
         ]);
     }
@@ -70,7 +78,7 @@ class HomeController extends Controller
             'title' => 'required',
             'description' => 'required',
             'image' => ['required', 'image', 'max:3000', 'mimes:jpeg,png,jpg,gif,svg'],
-            'genre_id' => 'required',
+            'tags' => ['required', 'exists:tags,id'],
             'game_id' => 'required',
             'user_id' => 'required',
             'hidden' => 'required'
@@ -82,11 +90,11 @@ class HomeController extends Controller
         $post->description = request('description');
         $post->image = request('image')->store('postimage');
         $post->user_id = request('user_id');
-        $post->genre_id = request('genre_id');
         $post->game_id = request('game_id');
         $post->hidden = request('hidden');
 
         $post->save();
+        $post->tags()->attach(request('tags'));
 
         return redirect('home')
             ->with('success', 'You have successfully created a post!');
@@ -98,13 +106,13 @@ class HomeController extends Controller
 
         //renders a list of a resource
         $post = Post::find($post->id);
-        $genres = Genre::all();
+        $tags = Tag::all();
         $games = Game::all();
 
         //show a view to edit a resource
         return view('home.edit', [
             'post' => $post,
-            'genres' => $genres,
+            'tags' => $tags,
             'games' => $games
         ]);
     }
@@ -113,13 +121,15 @@ class HomeController extends Controller
     {
 
         $this->authorize('myPost', $post);
+
+        $post->tags()->detach();
 //        dd(\request()->all());
         //persist the edited resource
         request()->validate([
             'title' => 'required',
             'description' => 'required',
             'image' => ['required'],
-            'genre_id' => 'required',
+            'tags' => ['required', 'exists:tags,id'],
             'game_id' => 'required',
             'user_id' => 'required',
             'hidden' => 'required'
@@ -131,11 +141,11 @@ class HomeController extends Controller
         $post->description = request('description');
         $post->image = request('image');
         $post->user_id = request('user_id');
-        $post->genre_id = request('genre_id');
         $post->game_id = request('game_id');
         $post->hidden = request('hidden');
 
         $post->save();
+        $post->tags()->attach(request('tags'));
 
         return redirect('home/' .$post->id)
             ->with('success', 'You have successfully edited your post!');

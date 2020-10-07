@@ -43,14 +43,18 @@
                             </div>
                         </div>
                         <div>
-                            <label for="genre_id">Genre</label>
+                            <label for="tags">Tags</label>
 
                             <div>
-                                <select name="genre_id" id="genre_id">
-                                    @foreach($genres as $genre)
-                                        <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                <select name="tags[]" multiple id="tags">
+                                    @foreach($tags as $tag)
+                                        <option value="{{$tag->id}}">{{$tag->name}}</option>
                                     @endforeach
                                 </select>
+
+                                @error('tags')
+                                    <p>{{$errors->first('tags')}}</p>
+                                @enderror
                             </div>
                         </div>
                         <div>

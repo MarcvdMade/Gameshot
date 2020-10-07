@@ -16,6 +16,7 @@
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">Id</th>
+                    <th scope="col">Username</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Admin</th>
@@ -25,6 +26,7 @@
                 @foreach($users as $user)
                 <tr>
                     <th scope="row">{{$user->id}}</th>
+                    <td class="text-wrap">{{$user->username}}</td>
                     <td class="text-wrap">{{$user->name}}</td>
                     <td class="text-wrap">{{$user->email}}</td>
                     <td>

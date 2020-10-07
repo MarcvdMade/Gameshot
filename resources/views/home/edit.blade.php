@@ -43,9 +43,9 @@
                             <label for="genre_id">Genre</label>
 
                             <div>
-                                <select name="genre_id" id="genre_id">
-                                    @foreach($genres as $genre)
-                                        <option @if($post->genre_id == $genre->id) selected="selected" @endif value="{{$genre->id}}">{{$genre->name}}</option>
+                                <select name="tags[]" multiple id="tags">
+                                    @foreach($tags as $tag)
+                                        <option @if($post->tags->contains($tag->id)) selected @endif value="{{$tag->id}}">{{$tag->name}}</option>
                                     @endforeach
                                 </select>
                             </div>

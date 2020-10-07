@@ -15,9 +15,14 @@ class Post extends Model
         return $this->belongsTo(Game::class);
     }
 
-    public function genre() {
-        return $this->belongsTo(Genre::class);
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
+
+//    public function genre() {
+//        return $this->belongsTo(Genre::class);
+//    }
 
 //    public function getPostImage($value)
 //    {

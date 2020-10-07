@@ -14,7 +14,7 @@ class CreatePostsTable extends Migration
     public function up()
     {
 
-        //game tag
+        //game table
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -22,9 +22,9 @@ class CreatePostsTable extends Migration
             $table->timestamps();
         });
 
-        //genre tag
-        Schema::create('genres', function (Blueprint $table) {
-            $table->id();
+        //tags table
+        Schema::create('tags', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('name');
             $table->timestamps();
         });
@@ -38,52 +38,39 @@ class CreatePostsTable extends Migration
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
-                ->references('id')->on('users');
-
-            $table->unsignedBigInteger('genre_id');
-            $table->foreign('genre_id')
-                ->references('id')->on('genres');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
 
             $table->unsignedBigInteger('game_id');
             $table->foreign('game_id')
-                ->references('id')->on('games');
+                ->references('id')
+                ->on('games')
+                ->onDelete('cascade');
 
             $table->boolean('hidden');
             $table->timestamps();
         });
 
-        //comments
-        Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
-                ->references('id')->on('users');
-
+        //pivot table post_tag
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('post_id');
-            $table->foreign('post_id')
-                ->references('id')->on('posts');
-
-            $table->text('description');
+            $table->unsignedBigInteger('tag_id');
             $table->timestamps();
-        });
 
-        //likes
-        Schema::create('likes', function (Blueprint $table) {
-            $table->id();
+            $table->unique(['post_id', 'tag_id']);
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
-                ->references('id')->on('users');
-
-            $table->unsignedBigInteger('post_id');
             $table->foreign('post_id')
-                ->references('id')->on('posts');
+                ->references('id')
+                ->on('posts')
+                ->onDelete('cascade');
 
-            $table->boolean('liked');
-            $table->timestamps();
+            $table->foreign('tag_id')
+                ->references('id')
+                ->on('tags')
+                ->onDelete('cascade');
         });
-
 
     }
 
