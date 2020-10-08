@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Game;
 use App\Tag;
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -28,11 +30,11 @@ class HomeController extends Controller
     {
 
         if (request('tag')) {
-            $post = Tag::where('name', request('tag'))->firstOrFail()->posts;
+            $post = Tag::where('name', request('tag'))->firstOrFail()->posts->where('hidden', 1);
 
 //            return $post;
         } else {
-            $post = Post::latest('created_at')->get();
+            $post = Post::where('hidden', 1)->latest('created_at')->get();
         }
 
         //renders a list of a resource
@@ -46,17 +48,20 @@ class HomeController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::find($id);
-
         if(! $post) {
             abort(404, 'Post not found!');
         }
 
-        return view('home.post', [
-            'post' => $post
-        ]);
+        if ($post->hidden === 0) {
+            $this->authorize('myPost', $post);
+        }
+
+            return view('home.post', [
+                'post' => $post
+            ]);
+
     }
 
     public function create()
@@ -105,7 +110,6 @@ class HomeController extends Controller
         $this->authorize('myPost', $post);
 
         //renders a list of a resource
-        $post = Post::find($post->id);
         $tags = Tag::all();
         $games = Game::all();
 
@@ -135,8 +139,6 @@ class HomeController extends Controller
             'hidden' => 'required'
         ]);
 
-        $post = Post::find($post->id);
-
         $post->title = request('title');
         $post->description = request('description');
         $post->image = request('image');
@@ -155,10 +157,23 @@ class HomeController extends Controller
     {
         $this->authorize('myPost', $post);
 
-        $post = Post::find($post->id);
         $post->delete();
         return redirect('home')
             ->with('success', 'You have successfully deleted your post!');
     }
 
+    public function showAllUserPosts(User $user) {
+
+        $post = Post::where('user_id', Auth::user()->id)->latest('created_at')->get();
+
+        //renders a list of a resource
+        $tags = Tag::all();
+        $games = Game::all();
+
+        return view('home', [
+            'post' => $post,
+            'tags' => $tags,
+            'games' => $games
+        ]);
+    }
 }

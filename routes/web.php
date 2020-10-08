@@ -22,6 +22,7 @@ Route::get('admin', 'AdminController@index')->name('admin')->middleware('can:is_
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/your-posts', 'HomeController@showAllUserPosts')->name('your-posts');
 Route::post('/home', 'HomeController@store');
 Route::put('/home/{post}', 'HomeController@update');
 Route::get('/home/create', 'HomeController@create')->name('create');

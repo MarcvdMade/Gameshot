@@ -136,6 +136,19 @@ footer {
     max-width: 600px;
 }
 
+.tag {
+    background-color: #FF101F;
+    border-radius: 10px;
+    padding: 5px;
+    color: #D3D3D3;
+}
+
+.tag:hover {
+    color: #D3D3D3;
+    background-color: #FF3C38;
+    text-decoration: none;
+}
+
 .post-title {
     background-color: #FF3C38;
     border-bottom: #FF101F solid 3px;

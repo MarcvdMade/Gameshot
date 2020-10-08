@@ -17,7 +17,7 @@
         @endif
         <div class=" action-row row justify-content-md-center mt-5 pt-3">
             <div class="col">
-                <a href=""><button class="submit-input">Profile</button></a>
+                <a href="{{route('your-posts')}}"><button class="submit-input">Show all your posts</button></a>
             </div>
             <div class="col">
                 <div>
@@ -65,12 +65,14 @@
                         <h2>{{$post->title}}</h2>
                     </div>
                     <img class="img-fluid" src={{asset('storage/'.$post->image)}}>
-                    <p>Posted by {{$post->user->username}}</p>
-                    <p>Game: {{$post->game->name}}</p>
-                    @foreach($post->tags as $tag)
-                        <a href="{{ route('home', ['tag' => $tag->name]) }}">{{$tag->name}}</a>
-                    @endforeach
-                    <a href="{{route('home', $post['id'])}}"><button class="submit-input">Show full post</button></a>
+                    <p class="ml-1">Posted by {{$post->user->username}}</p>
+                    <p class="ml-1">Game: {{$post->game->name}}</p>
+                    <div class="mb-3 ml-1">
+                        @foreach($post->tags as $tag)
+                            <a class="tag" href="{{ route('home', ['tag' => $tag->name]) }}">{{$tag->name}}</a>
+                        @endforeach
+                    </div>
+                    <a href="{{route('home.post', $post['id'])}}"><button class="submit-input">Show full post</button></a>
                 </div>
                 @endforeach
             </div>

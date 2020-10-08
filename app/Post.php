@@ -20,12 +20,4 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-//    public function genre() {
-//        return $this->belongsTo(Genre::class);
-//    }
-
-//    public function getPostImage($value)
-//    {
-//        return Storage::get($value);
-//    }
 }

@@ -96,4 +96,5 @@ class PostPolicy
 //        dd($user);
         return $post->user_id === $user->id;
     }
+
 }

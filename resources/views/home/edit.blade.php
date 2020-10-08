@@ -68,15 +68,15 @@
 
                             <div>
                                 <select name="hidden" id="hidden">
-                                    <option value="1">Show</option>
-                                    <option value="0">Hide</option>
+                                    <option @if($post->hidden === 1) selected @endif value="1">Post is shown</option>
+                                    <option @if($post->hidden === 0) selected @endif value="0">Post is hidden</option>
                                 </select>
                             </div>
                         </div>
 
                         <div>
                             <div>
-                                <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}">
+                                <input type="hidden" name="user_id" id="user_id" value="{{$post->user_id}}">
                             </div>
                             <div>
                                 <input type="submit" name="submit" id="submit">

@@ -11,15 +11,21 @@
             @if($post)
             <div class="post-div">
                 <div class="text-wrap">
-                    <h2 class="post-title">{{$post->title}}</h2>
+                    <div class="post-title">
+                        <h2>{{$post->title}}</h2>
+                    </div>
                     <img class="img-fluid" src={{asset('storage/'.$post->image)}}>
-                    <p>Posted by {{$post->user->username}}</p>
-                    <p>{{$post->description}}</p>
-                    <p>Game: {{$post->game->name}}</p>
-                    <p>Developer: {{$post->game->developer}}</p>
-                    @foreach($post->tags as $tag)
-                        <p>{{$tag->name}}</p>
-                    @endforeach
+                    <p class="ml-1">Posted by {{$post->user->username}}</p>
+                    <p class="ml-1">{{$post->description}}</p>
+                    <div class="row ml-1">
+                        <p>Game: {{$post->game->name}}</p>
+                        <p class="ml-2">Developer: {{$post->game->developer}}</p>
+                    </div>
+                    <div class="mb-3 ml-1">
+                        @foreach($post->tags as $tag)
+                        <a class="tag" href="{{ route('home', ['tag' => $tag->name]) }}">{{$tag->name}}</a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
