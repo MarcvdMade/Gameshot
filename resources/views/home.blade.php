@@ -21,33 +21,43 @@
             </div>
             <div class="col">
                 <div>
-                    <form>
+                    <form type="POST" action="{{route('game')}}">
+                        @csrf
+
                         <div>
                             <label for="game">Game</label>
-                            <select name="game">
-                                <option hidden disabled selected> -- Select a game -- </option>
+                            <select id="game" name="game">
+                                <option value="0" hidden disabled selected> -- Select a game -- </option>
                                 @foreach($games as $game)
-                                    <option value="{{$game->id}}">{{$game->name}}</option>
+                                    <option value="{{$game->name}}">{{$game->name}}</option>
                                 @endforeach
                             </select>
+                            <input id="game-filter" type="submit">
                         </div>
+                    </form>
+                    <form class="tags" type="POST" action="{{route('tag-filter')}}">
+                        @csrf
+
                         <div>
                             <label for="tag">Tag</label>
                             <select name="tag">
                                 <option hidden disabled selected> -- Select a tag -- </option>
                                 @foreach($tags as $tag)
-                                    <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                    <option value="{{$tag->name}}">{{$tag->name}}</option>
                                 @endforeach
                             </select>
+                            <input type="submit">
                         </div>
+                    </form>
+                    <form type="POST" action="{{route('search')}}">
+                        @csrf
+
                         <div>
                             <div class="flex-row">
                                 <label for="game">Search</label>
-                                <input type="text" name="search" id="search">
+                                <input type="text" name="search" id="search" value="">
+                                <input type="submit" name="submit" class="submit-input" value="search">
                             </div>
-                        </div>
-                        <div>
-                            <input type="submit" name="submit" class="submit-input" value="search">
                         </div>
                     </form>
                 </div>
@@ -58,18 +68,18 @@
         </div>
         <div class="row post-holder justify-content-md-center">
             <div class="row justify-content-md-center">
-                @foreach($post as $post)
+                @foreach($posts as $post)
                     @php /** @var App\Post $post */ @endphp
                 <div class=" card post-div">
                     <div class="post-title">
                         <h2>{{$post->title}}</h2>
                     </div>
-                    <img class="img-fluid" src={{asset('storage/'.$post->image)}}>
+                    <img class="img-fluid post-img" src={{asset('storage/'.$post->image)}}>
                     <p class="ml-1">Posted by {{$post->user->username}}</p>
                     <p class="ml-1">Game: {{$post->game->name}}</p>
                     <div class="mb-3 ml-1">
                         @foreach($post->tags as $tag)
-                            <a class="tag" href="{{ route('home', ['tag' => $tag->name]) }}">{{$tag->name}}</a>
+                            <a class="tag" href="{{ route('tag', ['tag' => $tag->name]) }}">{{$tag->name}}</a>
                         @endforeach
                     </div>
                     <a href="{{route('home.post', $post['id'])}}"><button class="submit-input">Show full post</button></a>
@@ -77,6 +87,10 @@
                 @endforeach
             </div>
         </div>
+            <div class="row padding-bottom justify-content-md-center">
+{{--                {{$posts->links()}}--}}
+            </div>
     </div>
 </div>
 @endsection
+

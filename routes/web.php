@@ -23,6 +23,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/your-posts', 'HomeController@showAllUserPosts')->name('your-posts');
+Route::get('/home/tag/{tag}', 'HomeController@tagFilter')->name('tag');
+Route::get('/home/tag', 'HomeController@tagFilter')->name('tag-filter');
+Route::get('/home/game', 'HomeController@gameFilter')->name('game');
+Route::get('/home/search', 'HomeController@search')->name('search');
+Route::post('/home/tag', 'HomeController@tagFilter');
 Route::post('/home', 'HomeController@store');
 Route::put('/home/{post}', 'HomeController@update');
 Route::get('/home/create', 'HomeController@create')->name('create');

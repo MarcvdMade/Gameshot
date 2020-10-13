@@ -140,6 +140,7 @@ footer {
     background-color: #FF101F;
     border-radius: 10px;
     padding: 5px;
+    margin-left: 2px;
     color: #D3D3D3;
 }
 
@@ -170,6 +171,39 @@ footer {
 .hide {
     display: none;
 }
+
+.post-img {
+    border-bottom: #FF101F solid 3px;
+}
+
+//.pagination > li > a {
+//    color: #D3D3D3;
+//    background-color: #343A40;
+//    border: none;
+//}
+//
+//.pagination > .page-item > .disabled > span:focus {
+//    color: #D3D3D3 !important;
+//    background-color: #343A40 !important;
+//}
+//
+//.pagination > li > a:focus,
+//.pagination > li > a:hover
+//{
+//    color: #D3D3D3;
+//    background-color: #FF101F;
+//    border: none;
+//}
+//
+//.page-item.active .page-link {
+//    background-color: #FF101F;
+//    border: none;
+//}
+//
+//.page-item.disabled > span {
+//    background-color: #FF101F;
+//    border: none;
+//}
 
 //scrollbar
 /* width */

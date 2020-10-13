@@ -9,17 +9,21 @@
         @endif
         <div class="row justify-content-md-center">
             @if($post)
-            <div class="post-div">
-                <div class="text-wrap">
+            <div class="post-div text-wrap">
+                <div>
                     <div class="post-title">
                         <h2>{{$post->title}}</h2>
                     </div>
-                    <img class="img-fluid" src={{asset('storage/'.$post->image)}}>
+                    <img class="img-fluid post-img" src={{asset('storage/'.$post->image)}}>
                     <p class="ml-1">Posted by {{$post->user->username}}</p>
                     <p class="ml-1">{{$post->description}}</p>
-                    <div class="row ml-1">
-                        <p>Game: {{$post->game->name}}</p>
-                        <p class="ml-2">Developer: {{$post->game->developer}}</p>
+                    <div class="row">
+                        <div class="col ml-1">
+                            <p>Game: {{$post->game->name}}</p>
+                        </div>
+                        <div class="col">
+                            <p>Developer: {{$post->game->developer}}</p>
+                        </div>
                     </div>
                     <div class="mb-3 ml-1">
                         @foreach($post->tags as $tag)
@@ -29,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-center padding-bottom">
+        <div class="row justify-content-md-center padding-bottom">
             @can('myPost', $post)
                 <a href="{{route('home.post.edit', $post['id'])}}"><button class="submit-input m-2">Edit post</button></a>
             @endcan

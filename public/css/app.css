@@ -11015,6 +11015,7 @@ footer {
   background-color: #FF101F;
   border-radius: 10px;
   padding: 5px;
+  margin-left: 2px;
   color: #D3D3D3;
 }
 
@@ -11044,6 +11045,10 @@ footer {
 
 .hide {
   display: none;
+}
+
+.post-img {
+  border-bottom: #FF101F solid 3px;
 }
 
 /* width */

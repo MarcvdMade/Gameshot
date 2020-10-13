@@ -29,20 +29,15 @@ class HomeController extends Controller
     public function index()
     {
 
-        if (request('tag')) {
-            $post = Tag::where('name', request('tag'))->firstOrFail()->posts->where('hidden', 1);
+        $posts = Post::where('hidden', 1)->latest('created_at')->get();
 
-//            return $post;
-        } else {
-            $post = Post::where('hidden', 1)->latest('created_at')->get();
-        }
 
         //renders a list of a resource
         $tags = Tag::all();
         $games = Game::all();
 
         return view('home', [
-            'post' => $post,
+            'posts' => $posts,
             'tags' => $tags,
             'games' => $games
         ]);
@@ -164,14 +159,65 @@ class HomeController extends Controller
 
     public function showAllUserPosts(User $user) {
 
-        $post = Post::where('user_id', Auth::user()->id)->latest('created_at')->get();
+        $posts = Post::where('user_id', Auth::user()->id)->latest('created_at')->get();
 
         //renders a list of a resource
         $tags = Tag::all();
         $games = Game::all();
 
         return view('home', [
-            'post' => $post,
+            'posts' => $posts,
+            'tags' => $tags,
+            'games' => $games
+        ]);
+    }
+
+    public function tagFilter() {
+
+//        dd(\request()->all());
+//        $posts = Tag::where('name', request('tag'))->firstOrFail()->posts->where('hidden', 1);
+        $posts = Tag::where('name', request('tag'))->firstOrFail()->posts->where('hidden', 1);
+//        $posts = Post::where('id', request('tag'))->firstOrFail()->where('hidden', 1)->paginate(2);
+
+        //renders a list of a resource
+        $tags = Tag::all();
+        $games = Game::all();
+
+        return view('home', [
+            'posts' => $posts,
+            'tags' => $tags,
+            'games' => $games
+        ]);
+    }
+
+    public function gameFilter() {
+
+//        dd(\request('tag'));
+        $posts = Game::where('name', request('game'))->firstOrFail()->posts->where('hidden', 1);
+//        $posts = Post::where('game_id', request('game'))->where('hidden', 1)->paginate(2);
+
+        //renders a list of a resource
+        $tags = Tag::all();
+        $games = Game::all();
+
+        return view('home', [
+            'posts' => $posts,
+            'tags' => $tags,
+            'games' => $games
+        ]);
+    }
+
+    public function search(Request $request) {
+
+        $search = $request->get('search');
+        $posts = Post::where('title', $search)->where('hidden', 1)->latest('created_at')->get();
+
+        //renders a list of a resource
+        $tags = Tag::all();
+        $games = Game::all();
+
+        return view('home', [
+            'posts' => $posts,
             'tags' => $tags,
             'games' => $games
         ]);
