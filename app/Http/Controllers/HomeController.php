@@ -6,6 +6,7 @@ use App\Game;
 use App\Tag;
 use App\Post;
 use App\User;
+//use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -210,7 +211,8 @@ class HomeController extends Controller
     public function search(Request $request) {
 
         $search = $request->get('search');
-        $posts = Post::where('title', $search)->where('hidden', 1)->latest('created_at')->get();
+        $posts = Post::where('title','LIKE', '%'.$search.'%')->where('hidden', 1)->latest('created_at')->get();
+//        $posts = DB::table('posts')->where('title', 'LIKE', '%'.$search.'%')->where('hidden', 1)->latest('created_at')->get();
 
         //renders a list of a resource
         $tags = Tag::all();
