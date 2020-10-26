@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $posts = Post::where('hidden', 1)->latest('created_at')->get();
+        $posts = Post::where('hidden', 1)->latest('created_at')->withLikes()->get();
 
 
         //renders a list of a resource
@@ -44,8 +44,10 @@ class HomeController extends Controller
         ]);
     }
 
-    public function show(Post $post)
+    public function show($id)
     {
+        $post = Post::withLikes()->find($id);
+
         if(! $post) {
             abort(404, 'Post not found!');
         }

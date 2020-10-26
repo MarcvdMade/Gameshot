@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 
+    use Likable;
+
     public function user() {
         return $this->belongsTo(User::class);
     }

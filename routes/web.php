@@ -34,3 +34,5 @@ Route::get('/home/create', 'HomeController@create')->name('create');
 Route::get('/home/{post}', 'HomeController@show')->name('home.post');
 Route::get('/home/{post}/edit', 'HomeController@edit')->name('home.post.edit');
 Route::delete('/home/{post}', 'HomeController@destroy');
+Route::post('/home/{post}/like', 'PostLikeController@store')->name('home.post.like');
+Route::delete('home/{post}/like', 'PostLikeController@destroy')->name('home.post.like');

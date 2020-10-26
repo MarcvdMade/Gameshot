@@ -30,6 +30,27 @@
                         <a class="tag" href="{{ route('home', ['tag' => $tag->name]) }}">{{$tag->name}}</a>
                         @endforeach
                     </div>
+                    <div class="flex ml-1">
+                        <div>
+                            <form method="POST" action="{{route('home.post.like', $post['id'])}}">
+                                @csrf
+                                <button type="submit">
+                                    <i class="fa fa-thumbs-up" style="color:{{ $post->isLikedBy(Auth::user()) ? "#FF101F" : "#3D3D3D"}};"></i>
+                                    <span>{{$post->likes ?: 0}}</span>
+                                </button>
+                            </form>
+                        </div>
+                        <div>
+                            <form method="POST" action="{{route('home.post.like', $post['id'])}}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">
+                                    <i class="fa fa-thumbs-down" style="color:{{ $post->isDislikedBy(Auth::user()) ? "#FF101F" : "#3D3D3D"}};"></i>
+                                    <span>{{$post->dislikes ?: 0}}</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
