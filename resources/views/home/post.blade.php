@@ -58,6 +58,21 @@
             @can('myPost', $post)
                 <a href="{{route('home.post.edit', $post['id'])}}"><button class="submit-input m-2">Edit post</button></a>
             @endcan
+                @can('myPost', $post)
+                    <div>
+                        <form method="POST" action="{{route('home.post.hide', $post->id)}}">
+                            @csrf
+                            @method('PUT')
+                            <div>
+                                <select name="hidden" id="hidden">
+                                    <option @if($post->hidden === 1) selected @endif value="1">Post is shown</option>
+                                    <option @if($post->hidden === 0) selected @endif value="0">Post is hidden</option>
+                                </select>
+                                <input type="submit" value="Change">
+                            </div>
+                        </form>
+                    </div>
+                @endcan
             <a href="{{route('home')}}"><button class="submit-input m-2">Go back</button></a>
             @can('myPost', $post, $post->user_id)
             <form method="POST" action="">

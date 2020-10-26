@@ -151,6 +151,21 @@ class HomeController extends Controller
             ->with('success', 'You have successfully edited your post!');
     }
 
+    public function hide(Post $post)
+    {
+        $this->authorize('myPost', $post);
+
+        request()->validate([
+            'hidden' => 'required'
+        ]);
+
+        $post->hidden = request('hidden');
+
+        $post->save();
+
+        return back();
+    }
+
     public function destroy(Post $post)
     {
         $this->authorize('myPost', $post);

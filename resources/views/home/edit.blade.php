@@ -6,7 +6,7 @@
             <div class="d-inline-flex flex-column p-2 form-box">
                 <div class="text-center text-uppercase"><h2>edit post</h2></div>
                 <div>
-                    <form method="POST" action="../{{$post->id}}">
+                    <form method="POST" action="{{route('home.post.update', $post->id)}}">
                         @csrf
                         @method('PUT')
 
@@ -67,10 +67,7 @@
                             <label for="hidden">hide post</label>
 
                             <div>
-                                <select name="hidden" id="hidden">
-                                    <option @if($post->hidden === 1) selected @endif value="1">Post is shown</option>
-                                    <option @if($post->hidden === 0) selected @endif value="0">Post is hidden</option>
-                                </select>
+                                <input type="hidden" name="hidden" id="hidden" value="{{$post->hidden}}">
                             </div>
                         </div>
 
@@ -84,11 +81,11 @@
                         </div>
 
                     </form>
-{{--                    <a href="{{route('home'.$post->id)}}"><button class="submit-input m-2">Cancel</button></a>--}}
                     <div class="mt-5 mb-3">
                         <img class="img-fluid" src="{{asset('storage/'.$post->image)}}">
                     </div>
                 </div>
+                <a href="{{route('home.post', $post->id)}}"><button class="submit-input m-2">Cancel</button></a>
             </div>
         </div>
     </div>
