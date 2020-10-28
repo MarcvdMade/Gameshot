@@ -44,10 +44,10 @@ Route::post('/home/tag', 'HomeController@tagFilter');
 Route::post('/home', 'HomeController@store');
 Route::put('/home/{post}', 'HomeController@update')->name('home.post.update');
 Route::get('/home/create', 'HomeController@create')->name('create');
+Route::put('/home/{post}/hide', 'HomeController@hide')->name('home.post.hide');
 Route::get('/home/{post}', 'HomeController@show')->name('home.post');
 Route::get('/home/{post}/edit', 'HomeController@edit')->name('home.post.edit');
 Route::delete('/home/{post}', 'HomeController@destroy');
-Route::put('/home/{post}/hide', 'HomeController@hide')->name('home.post.hide');
 
 //like routes
 Route::get('home/{post}/like', 'PostLikeController@index')->name('home.post.like');

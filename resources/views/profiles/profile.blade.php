@@ -8,17 +8,17 @@
                     <strong>{{$message}}</strong>
                 </div>
             @endif
-            <div>
-                <div>
-                    <h2>Posts of {{$user->username}}</h2>
+            <div class="container-fluid text-box mt-3">
+                <div class="justify-content-md-center text-center">
+                    <h2>Profile of {{$user->username}}</h2>
                     @can('edit', $user)
-                        <a href="{{$user->path('edit')}}">Edit Profile</a>
+                        <a href="{{$user->path('edit')}}"><button class="link-button">Edit Profile</button></a>
                     @endcan
                 </div>
             </div>
             <div class="row post-holder justify-content-md-center">
                 <div class="row justify-content-md-center">
-                    @foreach($posts as $post)
+                    @forelse($posts as $post)
                         @php /** @var App\Post $post */ @endphp
                         <div class=" card post-div">
                             <div class="post-title">
@@ -34,7 +34,9 @@
                             </div>
                             <a href="{{route('home.post', $post['id'])}}"><button class="submit-input">Show full post</button></a>
                         </div>
-                    @endforeach
+                    @empty
+                        <h2 class="mt-3">No posts yet!</h2>
+                    @endforelse
                 </div>
             </div>
         </div>

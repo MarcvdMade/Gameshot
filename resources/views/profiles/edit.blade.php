@@ -27,7 +27,7 @@
                             <label for="name">Name</label>
 
                             <div>
-                                <input type="text" name="name" id="name" value="{{$user->name}}" required>
+                                <input type="text" name="name" id="name" value="{{$user->name}}">
                                 @error('name')
                                 <p>{{$errors->first('name')}}</p>
                                 @enderror

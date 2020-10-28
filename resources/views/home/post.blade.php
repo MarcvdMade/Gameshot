@@ -64,13 +64,10 @@
                         @method('PUT')
                         <div class="container">
                             <div class="row">
-                                <select name="hidden" id="hidden">
-                                    <option @if($post->hidden === 1) selected @endif value="1">Post is shown</option>
-                                    <option @if($post->hidden === 0) selected @endif value="0">Post is hidden</option>
-                                </select>
+                                <input type="hidden" id="hidden" name="hidden" value="{{$post->hidden}}">
                             </div>
                             <div class="row justify-content-md-center pt-2">
-                                <input type="submit" value="Change" class="submit-input">
+                                <input type="submit" value="@if($post->hidden === 1) hide @else show @endif" class="submit-input">
                             </div>
                         </div>
                     </form>
@@ -94,3 +91,4 @@
         </div>
     </div>
 @endsection
+

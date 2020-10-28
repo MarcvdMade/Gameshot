@@ -159,7 +159,14 @@ class HomeController extends Controller
             'hidden' => 'required'
         ]);
 
-        $post->hidden = request('hidden');
+        switch (request('hidden')) {
+            case 0:
+                $post->hidden = 1;
+                break;
+            case 1:
+                $post->hidden = 0;
+                break;
+        }
 
         $post->save();
 
@@ -173,21 +180,6 @@ class HomeController extends Controller
         $post->delete();
         return redirect('home')
             ->with('success', 'You have successfully deleted your post!');
-    }
-
-    public function showAllUserPosts(User $user) {
-
-        $posts = Post::where('user_id', Auth::user()->id)->latest('created_at')->get();
-
-        //renders a list of a resource
-        $tags = Tag::all();
-        $games = Game::all();
-
-        return view('home', [
-            'posts' => $posts,
-            'tags' => $tags,
-            'games' => $games
-        ]);
     }
 
     public function tagFilter() {
