@@ -15,12 +15,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontpageController@show')->name('frontpage');
 
+//about routes
 Route::get('about', 'AboutController@show')->name('about');
 
-Route::get('admin', 'AdminController@index')->name('admin')->middleware('can:is_admin');
+//admin routes
+Route::middleware('can:is_admin')->group(function(){
+    Route::get('admin', 'AdminController@index')->name('admin');
+    Route::get('admin/make', 'AdminController@errorHandler')->name('admin.make');
+    Route::get('admin/delete', 'AdminController@errorHandler')->name('admin.delete');
+    Route::post('admin/make', 'AdminController@makeAdmin')->name('admin.make');
+    Route::delete('admin/delete', 'AdminController@destroy')->name('admin.delete');
+});
 
 Auth::routes();
 
+// home routes
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/your-posts', 'HomeController@showAllUserPosts')->name('your-posts');
 

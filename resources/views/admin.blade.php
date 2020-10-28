@@ -20,6 +20,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Admin</th>
+                    <th scope="col">Delete</th>
                 </tr>
                 </thead>
                 <tbody class="bg-light">
@@ -33,8 +34,21 @@
                         @if($user->hasRole('admin'))
                             Is already admin.
                             @else
-                            Not a admin
+                            <form method="POST" action="{{route('admin.make')}}">
+                                @csrf
+                                @method("POST")
+                                <input type="hidden" id="user" name="user" value="{{$user->id}}">
+                                <button type="submit" name="make-admin" id="make-admin">Make admin</button>
+                            </form>
                         @endif
+                    </td>
+                    <td>
+                        <form method="POST" action="{{route('admin.delete')}}">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" id="user" name="user" value="{{$user->id}}">
+                            <button type="submit" name="delete" id="delete">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

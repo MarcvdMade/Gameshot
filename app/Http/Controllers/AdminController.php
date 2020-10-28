@@ -25,8 +25,34 @@ class AdminController extends Controller
         ]);
     }
 
+    public function errorHandler()
+    {
+        abort(403, 'Not Allowed');
+    }
+
     public function makeAdmin()
     {
+        request()->validate([
+            'user' => 'required'
+        ]);
 
+        $user = User::find(request('user'));
+
+        $user->assignRole(1);
+
+        return back();
+    }
+
+    public function destroy()
+    {
+        request()->validate([
+            'user' => 'required'
+        ]);
+
+        $user = User::find(request('user'));
+
+        $user->delete();
+        return redirect('admin')
+            ->with('success', 'You have successfully deleted the user!');
     }
 }
