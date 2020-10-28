@@ -195,7 +195,7 @@ class HomeController extends Controller
 //        dd(\request()->all());
 //        $posts = Tag::where('name', request('tag'))->firstOrFail()->posts->where('hidden', 1);
         $posts = Tag::where('name', request('tag'))->firstOrFail()->posts->where('hidden', 1);
-//        $posts = Post::where('id', request('tag'))->firstOrFail()->where('hidden', 1)->paginate(2);
+//        $posts = Post::where('id', request('tag'))->firstOrFail()->where('hidden', 1)->withLikes();
 
         //renders a list of a resource
         $tags = Tag::all();
@@ -211,7 +211,7 @@ class HomeController extends Controller
     public function gameFilter() {
 
 //        dd(\request('tag'));
-        $posts = Game::where('name', request('game'))->firstOrFail()->posts->where('hidden', 1);
+        $posts = Game::where('name', request('game'))->firstOrFail()->posts->where('hidden', 1)->withLikes();
 //        $posts = Post::where('game_id', request('game'))->where('hidden', 1)->paginate(2);
 
         //renders a list of a resource
@@ -228,7 +228,7 @@ class HomeController extends Controller
     public function search(Request $request) {
 
         $search = $request->get('search');
-        $posts = Post::where('title','LIKE', '%'.$search.'%')->where('hidden', 1)->latest('created_at')->get();
+        $posts = Post::where('title','LIKE', '%'.$search.'%')->where('hidden', 1)->latest('created_at')->withLikes()->get();
 //        $posts = DB::table('posts')->where('title', 'LIKE', '%'.$search.'%')->where('hidden', 1)->latest('created_at')->get();
 
         //renders a list of a resource

@@ -64,8 +64,6 @@
                         </div>
 
                         <div>
-                            <label for="hidden">hide post</label>
-
                             <div>
                                 <input type="hidden" name="hidden" id="hidden" value="{{$post->hidden}}">
                             </div>
@@ -75,8 +73,8 @@
                             <div>
                                 <input type="hidden" name="user_id" id="user_id" value="{{$post->user_id}}">
                             </div>
-                            <div>
-                                <input type="submit" name="submit" id="submit">
+                            <div class="mt-3">
+                                <input type="submit" name="submit" id="submit" value="edit" class="submit-input">
                             </div>
                         </div>
 

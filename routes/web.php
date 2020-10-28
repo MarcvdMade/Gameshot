@@ -53,3 +53,9 @@ Route::put('/home/{post}/hide', 'HomeController@hide')->name('home.post.hide');
 Route::get('home/{post}/like', 'PostLikeController@index')->name('home.post.like');
 Route::post('home/{post}/like', 'PostLikeController@store')->name('home.post.like');
 Route::delete('home/{post}/like', 'PostLikeController@destroy')->name('home.post.like');
+
+//profile routes
+Route::patch('profiles/{user:username}', 'ProfilesController@update');
+Route::get('profiles/{user:username}', 'ProfilesController@show')->name('profile');
+Route::get('profiles/{user:username}/edit', 'ProfilesController@edit');
+

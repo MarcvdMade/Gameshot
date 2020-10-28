@@ -73,4 +73,16 @@ class User extends Authenticatable
     public function likes() {
         return $this->hasMany(Like::class);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
+
+    public function path($append = '')
+    {
+        $path = route('profile', $this->username);
+
+        return $append ? "{$path}/{$append}" : $path;
+    }
 }
