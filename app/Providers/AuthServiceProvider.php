@@ -38,6 +38,13 @@ class AuthServiceProvider extends ServiceProvider
             }
         });
 
+        Gate::define('like', function ($user) {
+//            dd($user);
+            if ($user->posts()->count() > 0) {
+                return true;
+            }
+        });
+
         Gate::define('myPost', [PostPolicy::class, 'myPost']);
 
     }

@@ -87,9 +87,6 @@
                 @endforeach
             </div>
         </div>
-            <div class="row padding-bottom justify-content-md-center">
-{{--                {{$posts->links()}}--}}
-            </div>
     </div>
 </div>
 @endsection

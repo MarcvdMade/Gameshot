@@ -30,6 +30,7 @@
                         <a class="tag" href="{{ route('home', ['tag' => $tag->name]) }}">{{$tag->name}}</a>
                         @endforeach
                     </div>
+                    @can('like', Auth::user())
                     <div class="flex ml-1">
                         <div>
                             <form method="POST" action="{{route('home.post.like', $post['id'])}}">
@@ -51,6 +52,7 @@
                             </form>
                         </div>
                     </div>
+                    @endcan
                 </div>
             </div>
         </div>

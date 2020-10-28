@@ -23,11 +23,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/your-posts', 'HomeController@showAllUserPosts')->name('your-posts');
+
+//filter routes
 Route::get('/home/tag/{tag}', 'HomeController@tagFilter')->name('tag');
 Route::get('/home/tag', 'HomeController@tagFilter')->name('tag-filter');
 Route::get('/home/game', 'HomeController@gameFilter')->name('game');
 Route::get('/home/search', 'HomeController@search')->name('search');
 Route::post('/home/tag', 'HomeController@tagFilter');
+
+//crud routes
 Route::post('/home', 'HomeController@store');
 Route::put('/home/{post}', 'HomeController@update')->name('home.post.update');
 Route::get('/home/create', 'HomeController@create')->name('create');
@@ -35,5 +39,8 @@ Route::get('/home/{post}', 'HomeController@show')->name('home.post');
 Route::get('/home/{post}/edit', 'HomeController@edit')->name('home.post.edit');
 Route::delete('/home/{post}', 'HomeController@destroy');
 Route::put('/home/{post}/hide', 'HomeController@hide')->name('home.post.hide');
-Route::post('/home/{post}/like', 'PostLikeController@store')->name('home.post.like');
+
+//like routes
+Route::get('home/{post}/like', 'PostLikeController@index')->name('home.post.like');
+Route::post('home/{post}/like', 'PostLikeController@store')->name('home.post.like');
 Route::delete('home/{post}/like', 'PostLikeController@destroy')->name('home.post.like');

@@ -8,8 +8,22 @@ use Illuminate\Support\Facades\Auth;
 
 class PostLikeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index()
+    {
+        abort(403, 'Not Allowed');
+    }
+
+
     public function store(Post $post)
     {
+        $this->authorize('like');
+
         $post->like(Auth::user());
 
         return back();
@@ -17,6 +31,8 @@ class PostLikeController extends Controller
 
     public function destroy(Post $post)
     {
+        $this->authorize('like');
+
         $post->dislike(Auth::user());
 
         return back();
