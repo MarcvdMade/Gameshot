@@ -8,11 +8,11 @@
                     <strong>{{$message}}</strong>
                 </div>
             @endif
-            <div class="container-fluid text-box mt-3">
+            <div class="container-fluid action-row mt-3">
                 <div class="justify-content-md-center text-center">
                     <h2>Profile of {{$user->username}}</h2>
                     @can('edit', $user)
-                        <a href="{{$user->path('edit')}}"><button class="link-button">Edit Profile</button></a>
+                        <a href="{{$user->path('edit')}}"><button class="submit-input">Edit Profile</button></a>
                     @endcan
                 </div>
             </div>
@@ -25,14 +25,14 @@
                                 <h2>{{$post->title}}</h2>
                             </div>
                             <img class="img-fluid post-img" src={{asset('storage/'.$post->image)}}>
-                            <p class="ml-1">Posted by <a href="{{route('profile', $post->user->username)}}">{{$post->user->username}}</a></p>
+                            <p class="ml-1">Posted by <a href="{{route('profile', $post->user->username)}}"><i class="fa fa-user" style="color: #FF101F"></i> {{$post->user->username}}</a></p>
                             <p class="ml-1">Game: {{$post->game->name}}</p>
                             <div class="mb-3 ml-1">
                                 @foreach($post->tags as $tag)
                                     <a class="tag" href="{{ route('tag', ['tag' => $tag->name]) }}">{{$tag->name}}</a>
                                 @endforeach
                             </div>
-                            <a href="{{route('home.post', $post['id'])}}"><button class="submit-input">Show full post</button></a>
+                            <a class="ml-1 mb-3" href="{{route('home.post', $post['id'])}}"><button class="submit-input">Show full post</button></a>
                         </div>
                     @empty
                         <h2 class="mt-3">No posts yet!</h2>

@@ -15,7 +15,7 @@
                         <h2>{{$post->title}}</h2>
                     </div>
                     <img class="img-fluid post-img" src={{asset('storage/'.$post->image)}}>
-                    <p class="ml-1">Posted by <a href="{{route('profile', $post->user->username)}}">{{$post->user->username}}</a></p>
+                    <p class="ml-1">Posted by <a href="{{route('profile', $post->user->username)}}"><i class="fa fa-user" style="color: #FF101F"></i> {{$post->user->username}}</a></p>
                     <p class="ml-1">{{$post->description}}</p>
                     <div class="row">
                         <div class="col ml-1">
@@ -30,8 +30,8 @@
                         <a class="tag" href="{{ route('home', ['tag' => $tag->name]) }}">{{$tag->name}}</a>
                         @endforeach
                     </div>
-                    @can('like', Auth::user())
-                    <div class="flex ml-1">
+                    @can('like', auth()->user())
+                    <div class="d-flex justify-content-start ml-1 mb-3">
                         <div>
                             <form method="POST" action="{{route('home.post.like', $post['id'])}}">
                                 @csrf
@@ -41,7 +41,7 @@
                                 </button>
                             </form>
                         </div>
-                        <div>
+                        <div class="ml-2">
                             <form method="POST" action="{{route('home.post.like', $post['id'])}}">
                                 @csrf
                                 @method('DELETE')

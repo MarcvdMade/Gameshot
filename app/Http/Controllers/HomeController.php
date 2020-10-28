@@ -182,6 +182,23 @@ class HomeController extends Controller
             ->with('success', 'You have successfully deleted your post!');
     }
 
+//    public function filter() {
+////        dd(\request()->all());
+//        if (request('tag')) {
+//            $tag = request('tag');
+//        } else {
+//            $tag = '';
+//        }
+//
+//        if (\request('game')) {
+//            $game = \request('game');
+//        } else {
+//            $game = \request('game');
+//        }
+//
+//        $posts = Post::where
+//    }
+
     public function tagFilter() {
 
 //        dd(\request()->all());
@@ -203,7 +220,7 @@ class HomeController extends Controller
     public function gameFilter() {
 
 //        dd(\request('tag'));
-        $posts = Game::where('name', request('game'))->firstOrFail()->posts->where('hidden', 1)->withLikes();
+        $posts = Game::where('name', request('game'))->firstOrFail()->posts->where('hidden', 1);
 //        $posts = Post::where('game_id', request('game'))->where('hidden', 1)->paginate(2);
 
         //renders a list of a resource

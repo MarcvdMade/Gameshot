@@ -11051,6 +11051,15 @@ footer {
   border-bottom: #FF101F solid 3px;
 }
 
+a {
+  color: #FF101F;
+}
+
+a:hover {
+  color: #FF3C38;
+  text-decoration: none;
+}
+
 /* width */
 
 ::-webkit-scrollbar {

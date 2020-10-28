@@ -43,12 +43,16 @@
                         @endif
                     </td>
                     <td>
+                        @if(!$user->hasRole('admin'))
                         <form method="POST" action="{{route('admin.delete')}}">
                             @csrf
                             @method('DELETE')
                             <input type="hidden" id="user" name="user" value="{{$user->id}}">
                             <button type="submit" name="delete" id="delete">Delete</button>
                         </form>
+                        @else
+                        You can't delete an admin!
+                        @endif
                     </td>
                 </tr>
                 @endforeach

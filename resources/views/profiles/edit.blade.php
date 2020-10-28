@@ -67,11 +67,13 @@
                                 <p>{{$errors->first('password_confirmation')}}</p>
                             @enderror
                         </div>
-
                         <div class="pt-3">
-                            <input class="submit-input" type="submit" name="submit" id="submit">
+                            <div>
+                                <input class="submit-input" type="submit" name="submit" id="submit" value="Change Information">
+                            </div>
                         </div>
                     </form>
+                    <a href="{{route('profile', auth()->user())}}"><button class="submit-input mt-4">Cancel</button></a>
                 </div>
             </div>
         </div>

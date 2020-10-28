@@ -65,24 +65,14 @@
                         <h2>{{$post->title}}</h2>
                     </div>
                     <img class="img-fluid post-img" src={{asset('storage/'.$post->image)}}>
-                    <p class="ml-1">Posted by <a href="{{route('profile', $post->user->username)}}">{{$post->user->username}}</a></p>
+                    <p class="ml-1">Posted by <a href="{{route('profile', $post->user->username)}}"><i class="fa fa-user" style="color: #FF101F"></i> {{$post->user->username}}</a></p>
                     <p class="ml-1">Game: {{$post->game->name}}</p>
                     <div class="mb-3 ml-1">
                         @foreach($post->tags as $tag)
                             <a class="tag" href="{{ route('tag', ['tag' => $tag->name]) }}">{{$tag->name}}</a>
                         @endforeach
                     </div>
-{{--                    <div class="flex ml-1">--}}
-{{--                        <div>--}}
-{{--                            <i class="fa fa-thumbs-up" style="color:{{ $post->isLikedBy(Auth::user()) ? "#FF101F" : "#D3D3D3"}};"></i>--}}
-{{--                            <span>{{$post->likes ?: 0}}</span>--}}
-{{--                        </div>--}}
-{{--                        <div>--}}
-{{--                            <i class="fa fa-thumbs-down" style="color:{{ $post->isDislikedBy(Auth::user()) ? "#FF101F" : "#D3D3D3"}};"></i>--}}
-{{--                            <span>{{$post->dislikes ?: 0}}</span>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-                    <a href="{{route('home.post', $post['id'])}}"><button class="submit-input">Show full post</button></a>
+                    <a class="ml-1 mb-3" href="{{route('home.post', $post['id'])}}"><button class="submit-input">Show full post</button></a>
                 </div>
                 @endforeach
             </div>
