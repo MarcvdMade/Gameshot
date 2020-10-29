@@ -33,12 +33,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //filter routes
-//Route::get('/home/filter', 'HomeController@filter')->name('filter');
+Route::get('/home/filter/', 'HomeController@filter')->name('filter');
 Route::get('/home/tag/{tag}', 'HomeController@tagFilter')->name('tag');
-Route::get('/home/tag', 'HomeController@tagFilter')->name('tag-filter');
-Route::get('/home/game', 'HomeController@gameFilter')->name('game');
 Route::get('/home/search', 'HomeController@search')->name('search');
-Route::post('/home/tag', 'HomeController@tagFilter');
+
 
 //crud routes
 Route::post('/home', 'HomeController@store');

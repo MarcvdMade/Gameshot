@@ -27,7 +27,7 @@
                     </div>
                     <div class="mb-3 ml-1">
                         @foreach($post->tags as $tag)
-                        <a class="tag" href="{{ route('home', ['tag' => $tag->name]) }}">{{$tag->name}}</a>
+                        <a class="tag" href="{{ route('tag', ['tag' => $tag->name]) }}">{{$tag->name}}</a>
                         @endforeach
                     </div>
                     @can('like', auth()->user())

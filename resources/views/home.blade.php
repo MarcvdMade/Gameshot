@@ -11,34 +11,7 @@
         <div class=" action-row row justify-content-md-center mt-5 pt-3">
             <div class="col">
                 <div>
-                    <form type="POST" action="{{route('game')}}">
-                        @csrf
 
-                        <div>
-                            <label for="game">Game</label>
-                            <select id="game" name="game">
-                                <option value="0" hidden disabled selected> -- Select a game -- </option>
-                                @foreach($games as $game)
-                                    <option value="{{$game->name}}">{{$game->name}}</option>
-                                @endforeach
-                            </select>
-                            <input class="submit-input" id="game-filter" type="submit" value="filter">
-                        </div>
-                    </form>
-                    <form class="tags" type="POST" action="{{route('tag-filter')}}">
-                        @csrf
-
-                        <div>
-                            <label for="tag">Tag</label>
-                            <select name="tag">
-                                <option hidden disabled selected> -- Select a tag -- </option>
-                                @foreach($tags as $tag)
-                                    <option value="{{$tag->name}}">{{$tag->name}}</option>
-                                @endforeach
-                            </select>
-                            <input class="submit-input" type="submit" value="filter">
-                        </div>
-                    </form>
                     <form type="POST" action="{{route('search')}}">
                         @csrf
 
@@ -47,6 +20,34 @@
                                 <label for="game">Search</label>
                                 <input class="mb-2" type="text" name="search" id="search" value="">
                                 <input type="submit" name="submit" class="submit-input" value="search">
+                            </div>
+                        </div>
+                    </form>
+
+                    <form type="POST" action="{{route('filter')}}">
+                        @csrf
+
+                        <div>
+                            <div>
+                                <label for="game">Game</label>
+                                <select id="game" name="game">
+                                    <option value="0" hidden disabled selected> -- Select a game -- </option>
+                                    @foreach($games as $game)
+                                        <option value="{{$game->name}}">{{$game->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <label for="tag">Tag</label>
+                                <select name="tag">
+                                    <option hidden disabled selected> -- Select a tag -- </option>
+                                    @foreach($tags as $tag)
+                                        <option value="{{$tag->name}}">{{$tag->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <input class="submit-input" type="submit" value="filter">
                             </div>
                         </div>
                     </form>

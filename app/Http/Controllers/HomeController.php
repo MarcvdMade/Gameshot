@@ -182,22 +182,39 @@ class HomeController extends Controller
             ->with('success', 'You have successfully deleted your post!');
     }
 
-//    public function filter() {
-////        dd(\request()->all());
-//        if (request('tag')) {
-//            $tag = request('tag');
-//        } else {
-//            $tag = '';
-//        }
-//
-//        if (\request('game')) {
-//            $game = \request('game');
-//        } else {
-//            $game = \request('game');
-//        }
-//
-//        $posts = Post::where
-//    }
+    public function filter() {
+//        dd(\request()->all());
+        $posts = Post::all();
+
+        if (request()->has('game')) {
+            $posts = Game::where('name', request('game'))->firstOrFail()->posts->where('hidden', 1);
+        }
+
+        if (request()->has('tag')) {
+            $posts = Tag::where('name', request('tag'))->firstOrFail()->posts->where('hidden', 1);
+        }
+
+        if (request()->has('tag') && request()->has('game')) {
+            $game = Game::where('name', request('game'))->firstOrFail();
+            $tag = Tag::where('name', request('tag'))->firstOrFail();
+
+            $posts = Tag::where('name', request('tag'))->firstOrFail()->posts->where('game_id', $game->id)->where('hidden', 1);
+//            dd($posts);
+        }
+
+        if (!request()->has('tag') && !request()->has('game')) {
+            abort(404);
+        }
+
+        $tags = Tag::all();
+        $games = Game::all();
+
+        return view('home', [
+            'posts' => $posts,
+            'tags' => $tags,
+            'games' => $games
+        ]);
+    }
 
     public function tagFilter() {
 
@@ -217,22 +234,22 @@ class HomeController extends Controller
         ]);
     }
 
-    public function gameFilter() {
-
-//        dd(\request('tag'));
-        $posts = Game::where('name', request('game'))->firstOrFail()->posts->where('hidden', 1);
-//        $posts = Post::where('game_id', request('game'))->where('hidden', 1)->paginate(2);
-
-        //renders a list of a resource
-        $tags = Tag::all();
-        $games = Game::all();
-
-        return view('home', [
-            'posts' => $posts,
-            'tags' => $tags,
-            'games' => $games
-        ]);
-    }
+//    public function gameFilter() {
+//
+////        dd(\request('tag'));
+//        $posts = Game::where('name', request('game'))->firstOrFail()->posts->where('hidden', 1);
+////        $posts = Post::where('game_id', request('game'))->where('hidden', 1)->paginate(2);
+//
+//        //renders a list of a resource
+//        $tags = Tag::all();
+//        $games = Game::all();
+//
+//        return view('home', [
+//            'posts' => $posts,
+//            'tags' => $tags,
+//            'games' => $games
+//        ]);
+//    }
 
     public function search(Request $request) {
 
