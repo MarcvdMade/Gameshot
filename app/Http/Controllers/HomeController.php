@@ -6,9 +6,7 @@ use App\Game;
 use App\Tag;
 use App\Post;
 use App\User;
-//use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -125,7 +123,6 @@ class HomeController extends Controller
         $this->authorize('myPost', $post);
 
         $post->tags()->detach();
-//        dd(\request()->all());
         //persist the edited resource
         request()->validate([
             'title' => 'required',
@@ -183,7 +180,6 @@ class HomeController extends Controller
     }
 
     public function filter() {
-//        dd(\request()->all());
         $posts = Post::all();
 
         if (request()->has('game')) {
@@ -199,7 +195,6 @@ class HomeController extends Controller
             $tag = Tag::where('name', request('tag'))->firstOrFail();
 
             $posts = Tag::where('name', request('tag'))->firstOrFail()->posts->where('game_id', $game->id)->where('hidden', 1);
-//            dd($posts);
         }
 
         if (!request()->has('tag') && !request()->has('game')) {
@@ -218,10 +213,7 @@ class HomeController extends Controller
 
     public function tagFilter() {
 
-//        dd(\request()->all());
-//        $posts = Tag::where('name', request('tag'))->firstOrFail()->posts->where('hidden', 1);
         $posts = Tag::where('name', request('tag'))->firstOrFail()->posts->where('hidden', 1);
-//        $posts = Post::where('id', request('tag'))->firstOrFail()->where('hidden', 1)->withLikes();
 
         //renders a list of a resource
         $tags = Tag::all();
@@ -234,28 +226,10 @@ class HomeController extends Controller
         ]);
     }
 
-//    public function gameFilter() {
-//
-////        dd(\request('tag'));
-//        $posts = Game::where('name', request('game'))->firstOrFail()->posts->where('hidden', 1);
-////        $posts = Post::where('game_id', request('game'))->where('hidden', 1)->paginate(2);
-//
-//        //renders a list of a resource
-//        $tags = Tag::all();
-//        $games = Game::all();
-//
-//        return view('home', [
-//            'posts' => $posts,
-//            'tags' => $tags,
-//            'games' => $games
-//        ]);
-//    }
-
     public function search(Request $request) {
 
         $search = $request->get('search');
         $posts = Post::where('title','LIKE', '%'.$search.'%')->where('hidden', 1)->latest('created_at')->withLikes()->get();
-//        $posts = DB::table('posts')->where('title', 'LIKE', '%'.$search.'%')->where('hidden', 1)->latest('created_at')->get();
 
         //renders a list of a resource
         $tags = Tag::all();

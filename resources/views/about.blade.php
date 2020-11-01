@@ -22,8 +22,7 @@
                         An other part of the project is to create an log in and registration system. This also includes validation.
                     </p>
                     <p>
-                        Users can create, change, remove and hide posts. They can also like posts. After liking five posts they can
-                        even comment on posts.
+                        Users can create, change, remove and hide posts. They can also like posts. After creating a post you can like other peoples posts.
                     </p>
                 </div>
             </div>

@@ -10,7 +10,6 @@ trait Likable
 {
     public function scopeWithLikes(Builder $query)
     {
-//        dd($query);
         $query->leftJoinSub(
             'select post_id, sum(liked) likes, sum(!liked) dislikes from likes group by post_id',
             'likes',
@@ -39,12 +38,10 @@ trait Likable
 
     public function isLikedBy(User $user)
     {
-//        dd($user->likes);
         return (bool) $user->likes
             ->where('post_id', $this->id)
             ->where('liked', true)
             ->count();
-//        return 'test';
     }
 
     public function isDislikedBy(User $user)
